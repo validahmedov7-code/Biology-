@@ -1,0 +1,1437 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Вегетативная нервная система</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Макет: сверху живая панель баланса (ползунок, органы, ЭКГ), ниже разделы с чередующимся фоном.
+   Схемы и пояснения стоят рядом на широком экране и друг под другом на телефоне.
+   Две краски гистологического препарата: эозин (симпатика) и гематоксилин (парасимпатика). */
+:root{
+  --bg:#F5F4FA; --surface:#FFFFFF; --surface-2:#ECEAF5;
+  --fg:#1B1736; --muted:#5A5678; --line:#D8D5E8;
+  --symp:#E0446C; --symp-ink:#B3204A; --symp-soft:#FBE3EA;
+  --para:#4F43B8; --para-ink:#4338A8; --para-soft:#E4E1F8;
+  --ent:#1E8574; --ent-soft:#DDF1EC;
+  --bone:#E7DCC4; --bone-d:#C9BB9A; --bone-line:#8F8264; --disc:#8FB0C8; --cord:#F2E9D3; --cord-line:#A99A78;
+  --brain:#E3C0C8; --cereb:#D5AEB8; --canal:#EFE6D2;
+  --art:#D43A2F; --art-soft:#F4B8B0; --ven:#2F6DB5; --media:#D98F98; --lung:#DCE7F3; --kid:#C0796B;
+  --live:var(--para);
+  --f-display:'Unbounded','Arial Black',system-ui,sans-serif;
+  --f-body:'Golos Text',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --f-mono:'IBM Plex Mono',ui-monospace,'SF Mono',Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#13112B; --surface:#1C1A3C; --surface-2:#26234D;
+    --fg:#ECEAF9; --muted:#AAA6CC; --line:#38346A;
+    --symp:#FF6F94; --symp-ink:#FF8DAA; --symp-soft:#43203A;
+    --para:#8F86FF; --para-ink:#A9A2FF; --para-soft:#2A2762;
+    --ent:#4CC5AE; --ent-soft:#183C3A;
+  --bone:#D8CDB3; --bone-d:#A99C7C; --bone-line:#5E5640; --disc:#5E86A6; --cord:#EFE6CF; --cord-line:#8B7E5E;
+  --brain:#8F6A7C; --cereb:#7E5A6C; --canal:#2A2750;
+  --art:#FF5A4F; --art-soft:#6B2A2C; --ven:#5E9BE8; --media:#9A5563; --lung:#26365C; --kid:#9B5F58;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#13112B; --surface:#1C1A3C; --surface-2:#26234D;
+  --fg:#ECEAF9; --muted:#AAA6CC; --line:#38346A;
+  --symp:#FF6F94; --symp-ink:#FF8DAA; --symp-soft:#43203A;
+  --para:#8F86FF; --para-ink:#A9A2FF; --para-soft:#2A2762;
+  --ent:#4CC5AE; --ent-soft:#183C3A;
+  --bone:#D8CDB3; --bone-d:#A99C7C; --bone-line:#5E5640; --disc:#5E86A6; --cord:#EFE6CF; --cord-line:#8B7E5E;
+  --brain:#8F6A7C; --cereb:#7E5A6C; --canal:#2A2750;
+  --art:#FF5A4F; --art-soft:#6B2A2C; --ven:#5E9BE8; --media:#9A5563; --lung:#26365C; --kid:#9B5F58;
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(68px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--fg);font:400 1rem/1.65 var(--f-body);-webkit-text-size-adjust:100%;overflow-wrap:break-word}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--bg)}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--para);outline-offset:3px;border-radius:6px}
+
+.wrap{width:100%;max-width:1120px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* Верхняя полоса */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+.topin{display:flex;align-items:center;gap:14px;height:52px}
+.brand{flex:none;font:500 .8rem var(--f-mono);letter-spacing:.16em;text-decoration:none}
+.top nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.top nav::-webkit-scrollbar{display:none}
+.top nav a{flex:none;padding:6px 11px;border-radius:999px;font-size:.85rem;color:var(--muted);text-decoration:none}
+.top nav a:hover{color:var(--fg);background:var(--surface-2)}
+
+/* Типографика */
+.eyebrow{font:500 .74rem var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(1.7rem,6.2vw + .4rem,4.1rem)/1.08 var(--f-display);letter-spacing:-.02em;text-wrap:balance;margin-top:14px}
+h2{font:500 clamp(1.3rem,3vw + .6rem,2.1rem)/1.18 var(--f-display);letter-spacing:-.01em;text-wrap:balance;margin-top:10px}
+h3{font:600 1.05rem/1.3 var(--f-body)}
+.lede{font-size:1.12rem;max-width:60ch;margin-top:18px;color:var(--fg)}
+.sub{color:var(--muted);max-width:62ch;margin-top:12px}
+.prose{display:grid;gap:1em;max-width:62ch}
+.mono{font-family:var(--f-mono)}
+.s-ink{color:var(--symp-ink)} .p-ink{color:var(--para-ink)}
+
+/* Секции */
+section{padding-block:clamp(40px,7vw,84px)}
+.alt{background:var(--surface);border-block:1px solid var(--line)}
+.sh{margin-bottom:clamp(22px,4vw,40px)}
+.split{display:grid;gap:clamp(24px,4vw,48px);grid-template-columns:minmax(0,1fr);align-items:start}
+.split>*{min-width:0}
+@media(min-width:880px){.split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.split.wide-l{grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:clamp(16px,3vw,24px)}
+.alt .panel,.alt .tile{background:var(--bg)}
+
+/* Лаборатория баланса */
+.hero{padding-block:clamp(28px,6vw,60px) clamp(36px,6vw,72px)}
+.lab{--tp:25%;margin-top:30px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,3vw,28px);display:grid;gap:22px}
+@supports (color:color-mix(in srgb,red,blue)){.lab{--live:color-mix(in srgb,var(--symp) var(--tp),var(--para))}}
+.dial{display:grid;gap:8px}
+.poles{display:flex;justify-content:space-between;gap:12px}
+.pole{display:grid;gap:2px;font-size:.84rem;color:var(--muted);min-width:0}
+.pole b{font:700 .95rem var(--f-display)}
+.pole.p b{color:var(--para-ink)} .pole.s b{color:var(--symp-ink)} .pole.s{text-align:right}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:36px;background:transparent;margin:0;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:10px;border-radius:99px;background:linear-gradient(90deg,var(--para),var(--symp))}
+input[type=range]::-moz-range-track{height:10px;border-radius:99px;background:linear-gradient(90deg,var(--para),var(--symp))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;box-sizing:border-box;width:30px;height:30px;margin-top:-10px;border-radius:50%;background:var(--surface);border:3px solid var(--fg);box-shadow:0 2px 8px rgba(20,16,50,.3)}
+input[type=range]::-moz-range-thumb{box-sizing:border-box;width:28px;height:28px;border-radius:50%;background:var(--surface);border:3px solid var(--fg)}
+.mix{font:500 .78rem var(--f-mono);color:var(--muted);text-align:center;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg);font-size:.88rem;cursor:pointer}
+.chip:hover{border-color:var(--muted)}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(min-width:860px){.tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.tile{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--bg);display:grid;gap:5px;align-content:start;min-width:0}
+.tile svg{width:100%;height:auto;max-height:92px;display:block;margin-bottom:4px}
+.tname{font:500 .7rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tval{font:700 1.45rem/1.1 var(--f-display);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.tval small{font:500 .78rem var(--f-body);color:var(--muted)}
+.tval.word{font-size:1.02rem;padding-block:.2rem}
+.tcap{font-size:.84rem;line-height:1.4;color:var(--muted)}
+.heart{fill:var(--live);transform-box:fill-box;transform-origin:center;animation:beat var(--beat,.9s) ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}14%{transform:scale(1.15)}28%{transform:scale(1)}42%{transform:scale(1.07)}56%{transform:scale(1)}}
+.eyeo{fill:var(--surface);stroke:var(--fg);stroke-width:2.5;stroke-linejoin:round}
+.iris{fill:var(--live)}
+.pupil{fill:#0C0A1C;transform-box:fill-box;transform-origin:center;transition:transform .35s ease}
+.bro path{stroke:var(--live);transition:stroke-width .4s ease}
+.bro .b0{stroke-width:calc(var(--bw,3) * 1.5px)} .bro .b1{stroke-width:calc(var(--bw,3) * 1px)} .bro .b2{stroke-width:calc(var(--bw,3) * .6px)}
+.bro circle{fill:var(--live);opacity:.45}
+.gut0{fill:none;stroke:var(--surface-2);stroke-width:14;stroke-linecap:round}
+.gutflow{fill:none;stroke:var(--live);stroke-width:14;stroke-linecap:round;stroke-dasharray:1 34;animation:gutflow var(--gdur,2s) linear infinite}
+@keyframes gutflow{to{stroke-dashoffset:-35}}
+.ecg{display:grid;gap:8px}
+.ecghead{display:flex;justify-content:space-between;gap:12px}
+#ecg{width:100%;height:96px;display:block;border-radius:10px;background:var(--bg);border:1px solid var(--line)}
+.note{font-size:.8rem;color:var(--muted)}
+
+/* Три отдела */
+.divs{display:grid;gap:0;border-top:1px solid var(--line)}
+.div3{display:grid;gap:6px;padding:20px 0;border-bottom:1px solid var(--line)}
+@media(min-width:760px){.div3{grid-template-columns:220px minmax(0,1fr) 160px;gap:28px;align-items:center}}
+.div3 h3{display:flex;align-items:center;gap:10px;font:500 1.02rem var(--f-display)}
+.dot{width:12px;height:12px;border-radius:50%;flex:none;background:var(--muted)}
+.dot.s{background:var(--symp)} .dot.p{background:var(--para)} .dot.e{background:var(--ent)}
+.div3 .mt{font:500 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+
+/* Схема пути */
+.diagram{width:100%;max-width:440px;margin-inline:auto}
+.diagram svg{display:block;width:100%;height:auto;overflow:visible}
+.t{font:500 12px var(--f-body);fill:var(--fg)} .tb{font:600 13px var(--f-body);fill:var(--fg)} .tm{font:400 11px var(--f-mono);fill:var(--muted)}
+.cnsS{fill:var(--symp-soft);stroke:var(--symp);stroke-width:1.5} .cnsP{fill:var(--para-soft);stroke:var(--para);stroke-width:1.5}
+.org{fill:var(--surface-2);stroke:var(--line);stroke-width:1.5;transition:fill .25s,stroke .25s}
+.fS{fill:none;stroke:var(--symp);stroke-linecap:round} .fP{fill:none;stroke:var(--para);stroke-linecap:round}
+.node{fill:var(--surface);stroke-width:2.5;transition:fill .25s,r .25s}
+.node.S{stroke:var(--symp)} .node.P{stroke:var(--para)}
+.node.S.hit{fill:var(--symp-soft)} .node.P.hit{fill:var(--para-soft)}
+.org.S.hit{fill:var(--symp-soft);stroke:var(--symp)} .org.P.hit{fill:var(--para-soft);stroke:var(--para)}
+.pulse{opacity:0}
+.pulse.S{fill:var(--symp)} .pulse.P{fill:var(--para)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--fg);background:var(--fg);color:var(--bg);font-weight:500;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--line)}
+.btn:hover{opacity:.9}
+.cmp{display:grid;gap:14px;margin-top:20px}
+.cmp div{display:grid;gap:2px}
+
+/* Спина */
+.spine svg{display:block;width:100%;height:auto;max-width:430px;margin-inline:auto;overflow:visible}
+.spine .tb2{font:600 11px var(--f-body);fill:var(--fg)}
+.spine .tm9{font:400 9px var(--f-mono);fill:var(--muted)}
+.bn{fill:url(#gBone);stroke:var(--bone-line);stroke-width:.9;stroke-linejoin:round}
+.disc{fill:var(--disc);stroke:var(--bone-line);stroke-width:.5}
+.canal{fill:var(--canal);stroke:var(--bone-line);stroke-width:.5}
+.rib{fill:none;stroke:var(--bone);stroke-width:3;stroke-linecap:round;opacity:.5}
+.lead{stroke:var(--line);stroke-width:1;stroke-dasharray:2 3}
+.brace{fill:none;stroke-width:3;stroke-linecap:round}
+.orb{fill:var(--surface);stroke:var(--bone-line);stroke-width:1}
+.brain{fill:var(--brain);stroke:none}
+.cereb{fill:var(--cereb)}
+.gyri{fill:none;stroke:var(--cereb);stroke-width:2;stroke-linecap:round;opacity:.6}
+.nuc{fill:var(--para);stroke:var(--surface);stroke-width:1}
+.cord{fill:var(--cord);stroke:var(--cord-line);stroke-width:.8}
+.cq{fill:none;stroke:var(--cord-line);stroke-width:1;opacity:.8}
+.hl.bs{fill:var(--para);stroke:var(--para-ink);stroke-width:.8}
+.hl.sy{fill:var(--symp)} .hl.pa{fill:var(--para)}
+.hit{fill:#000;fill-opacity:0;pointer-events:all}
+.hit2{fill:none;stroke:#000;stroke-opacity:0;stroke-width:12;pointer-events:stroke}
+.chain-l{fill:none;stroke:var(--symp);stroke-width:1.8;stroke-linejoin:round}
+.chain-f{fill:none;stroke:#fff;stroke-opacity:.7;stroke-width:1.8;stroke-dasharray:.1 9;stroke-linecap:round;animation:chainrun 1.6s linear infinite}
+@keyframes chainrun{to{stroke-dashoffset:-9.1}}
+.ramus{fill:none;stroke:var(--symp);stroke-width:1.1;opacity:.85}
+.gang{fill:var(--surface);stroke:var(--symp);stroke-width:1.6}
+.gang.pg{stroke:var(--para)}
+.pn{fill:none;stroke:var(--para);stroke-width:1.6;stroke-linecap:round}
+.pn-f{fill:none;stroke:#fff;stroke-opacity:.7;stroke-width:1.6;stroke-dasharray:.1 9;stroke-linecap:round;animation:chainrun 1.9s linear infinite}
+.reg{cursor:pointer}
+.reg.sel .hl{stroke:var(--fg);stroke-width:2}
+.reg:hover .hl{opacity:.85}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.84rem;color:var(--muted);margin-top:12px}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.lg{display:inline-block;width:12px;height:12px;border-radius:3px}
+@media(min-width:880px){.stick{position:sticky;top:calc(76px + env(safe-area-inset-top,0px))}}
+/* сосуды */
+.vfig svg{display:block;width:100%;max-width:400px;height:auto;margin-inline:auto}
+.sil{fill:var(--surface-2)}
+.lung{fill:var(--lung)}
+.kid{fill:var(--kid);stroke:none}
+.vbase{fill:none;stroke-linecap:round;stroke-linejoin:round;transition:stroke-width .7s}
+.vbase.art{stroke:var(--art)} .vbase.ven{stroke:var(--ven)}
+.vflow{fill:none;stroke:#fff;stroke-opacity:.65;stroke-linecap:round;stroke-dasharray:.1 11;animation:vflow 2.8s linear infinite;transition:stroke-width .7s}
+.vflow.rev{animation-direction:reverse}
+@keyframes vflow{to{stroke-dashoffset:-11.1}}
+.heartv{fill:var(--art);stroke:var(--surface);stroke-width:1.2;transform-box:fill-box;transform-origin:center;animation:beat .9s ease-in-out infinite}
+.vfig .tm{font:400 10px var(--f-mono);fill:var(--muted)}
+.vside{display:grid;gap:14px;align-content:start}
+.vside h3{margin-top:10px}
+.vbars{display:grid;gap:10px}
+.vb{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) 44px;gap:10px;align-items:center;font-size:.88rem}
+.vbl{min-width:0}
+.vbt{height:10px;border-radius:99px;background:var(--surface-2);overflow:hidden}
+.alt .vbt{background:var(--bg)}
+.vbf{display:block;height:100%;border-radius:99px;background:var(--art);transition:width .8s ease}
+.vbn{font:500 .8rem var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.xrow{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+@media(max-width:520px){.xrow{grid-template-columns:minmax(0,1fr)}}
+.xrow figure{display:grid;gap:8px;justify-items:start}
+.xrow figcaption{display:grid;gap:3px;font-size:.84rem;color:var(--muted)}
+.xrow figcaption b{color:var(--fg);font-weight:600}
+.xs{display:block;width:130px;height:130px}
+.xadv{fill:var(--surface-2);stroke:var(--line);stroke-width:1}
+.xmed{fill:var(--media)}
+.xint{fill:var(--art-soft);transition:r .5s}
+.xlum{fill:var(--art);transition:r .5s}
+.xrbc{fill:var(--art-soft);opacity:.85}
+.rg{display:grid;gap:6px;font-size:.9rem;font-weight:500}
+.info h3{margin-bottom:8px}
+.info p{color:var(--fg)}
+.info .mt{font:500 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+
+/* Медиаторы */
+.relays{display:grid;gap:14px;margin-bottom:28px}
+.relay{display:flex;flex-wrap:wrap;align-items:center;gap:8px 8px}
+.rl{font:500 .72rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase;flex:0 0 100%}
+.rl.s{color:var(--symp-ink)} .rl.p{color:var(--para-ink)}
+.rn{border:1px solid var(--line);background:var(--surface);border-radius:8px;padding:6px 10px;font-size:.88rem}
+.relay.s .rn:last-child{border-color:var(--symp)} .relay.p .rn:last-child{border-color:var(--para)}
+.ra{font:500 .76rem var(--f-mono);color:var(--muted);display:inline-flex;gap:5px;align-items:center}
+.ra::after{content:"→"}
+.recs{display:grid;gap:0;border-top:1px solid var(--line)}
+.recs>div{display:grid;gap:4px;padding:12px 0;border-bottom:1px solid var(--line)}
+@media(min-width:640px){.recs>div{grid-template-columns:90px minmax(0,1fr);gap:20px}}
+.recs dt{font:500 1rem var(--f-mono)}
+.recs dd{color:var(--fg)}
+.excs{margin-top:28px;display:grid;gap:10px;padding-left:1.1em}
+
+/* Таблица эффектов */
+.seg2{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.fxhead{display:none}
+.fxrow{display:grid;gap:8px;padding:16px 0;border-top:1px solid var(--line)}
+.fxorg{font:500 .95rem var(--f-display)}
+.cell{transition:opacity .25s;display:grid;gap:2px}
+.tag{font:500 .68rem var(--f-mono);letter-spacing:.1em;text-transform:uppercase}
+.tag.s{color:var(--symp-ink)} .tag.p{color:var(--para-ink)}
+@media(min-width:760px){
+  .fxhead,.fxrow{display:grid;grid-template-columns:150px minmax(0,1fr) minmax(0,1fr);gap:28px}
+  .fxhead{padding-bottom:10px}
+  .fxrow .tag{display:none}
+}
+.fx[data-show="s"] .cp,.fx[data-show="p"] .cs{opacity:.25}
+
+/* Энтеральная */
+.plex{display:grid;gap:14px;margin-top:6px}
+.plex div{display:grid;gap:2px}
+.plex b{color:var(--ent)}
+.entbox{background:var(--ent-soft);border-radius:12px;padding:clamp(16px,3vw,24px)}
+
+/* Рефлекс */
+.chain{list-style:none;padding:0;display:grid;gap:0;counter-reset:st}
+.chain li{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;padding:12px 0;position:relative;opacity:.45;transition:opacity .3s}
+.chain li::before{content:"";position:absolute;left:16px;top:44px;bottom:-12px;width:2px;background:var(--line)}
+.chain li:last-child::before{display:none}
+.chain .n{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font:500 .85rem var(--f-mono);background:var(--bg);transition:background .3s,border-color .3s,color .3s}
+.chain li.done,.chain li.on{opacity:1}
+.chain li.done .n{border-color:var(--live);color:var(--live)}
+.chain li.on .n{background:var(--live);border-color:var(--live);color:var(--bg)}
+.chain.up{--live:var(--para)} .chain.down{--live:var(--symp)}
+.result{margin-top:14px;font-weight:500}
+
+/* История */
+.tl{list-style:none;padding:0;display:grid;border-bottom:1px solid var(--line)}
+.tl li{display:grid;grid-template-columns:84px minmax(0,1fr);gap:16px;padding:18px 0;border-top:1px solid var(--line)}
+.yr{font:700 1.05rem var(--f-display);font-variant-numeric:tabular-nums}
+.tl p{max-width:60ch}
+
+/* Клиника */
+.clin{display:grid;gap:0;border-top:1px solid var(--line)}
+.clin>div{display:grid;gap:4px;padding:16px 0;border-bottom:1px solid var(--line)}
+@media(min-width:760px){.clin>div{grid-template-columns:240px minmax(0,1fr);gap:28px}}
+.clin dt{font-weight:600}
+.drugs{margin-top:34px}
+.drugs h3{margin-bottom:10px}
+.drug{display:grid;gap:2px;padding:12px 0;border-top:1px solid var(--line)}
+@media(min-width:760px){.drug{grid-template-columns:240px minmax(0,1fr);gap:28px}}
+.drug b{font-weight:600}
+.warn{margin-top:22px;padding:14px 16px;border-radius:10px;background:var(--surface-2);font-size:.9rem;max-width:70ch}
+
+/* Дыхание */
+.breath{display:grid;justify-items:center;gap:18px;text-align:center}
+.bstage{width:min(70vw,280px);aspect-ratio:1;display:grid;place-items:center;position:relative}
+.bring{position:absolute;inset:0;border-radius:50%;border:2px dashed var(--line)}
+#bcircle{width:62%;aspect-ratio:1;border-radius:50%;background:var(--para);background:radial-gradient(circle at 35% 30%,var(--para),color-mix(in srgb,var(--para) 70%,var(--fg)));display:grid;place-items:center;color:#fff;will-change:transform}
+.btxt{position:absolute;inset:0;display:grid;place-content:center;gap:0;pointer-events:none;line-height:1.15}
+#blabel{font:700 1.25rem var(--f-display);color:var(--fg)}
+#bsec{font:500 1.9rem var(--f-mono);font-variant-numeric:tabular-nums;color:var(--fg)}
+.brow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+.btot{font:500 .85rem var(--f-mono);color:var(--muted);font-variant-numeric:tabular-nums}
+
+/* Тест */
+.quiz{max-width:720px}
+.qprog{font:500 .75rem var(--f-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.qq{font:500 1.15rem/1.4 var(--f-body);margin:10px 0 16px}
+.qopts{display:grid;gap:8px}
+.qo{text-align:left;padding:12px 16px;border-radius:10px;border:1px solid var(--line);background:var(--bg);cursor:pointer;line-height:1.4}
+.qo:hover:not(:disabled){border-color:var(--muted)}
+.qo:disabled{cursor:default}
+.qo.ok{border-color:var(--ent);background:var(--ent-soft)}
+.qo.bad{border-color:var(--symp);background:var(--symp-soft)}
+.qfb{margin-top:14px;min-height:3.2em}
+.qscore{font:700 clamp(1.6rem,5vw,2.4rem) var(--f-display)}
+
+/* Анимации отделов и разделов */
+@keyframes rise{from{opacity:.2;transform:translateY(18px)}to{opacity:1;transform:none}}
+.rv.in{animation:rise .6s cubic-bezier(.2,.7,.2,1) both}
+.hero .eyebrow{animation:rise .6s ease both}
+.hero h1{animation:rise .7s .08s ease both}
+.hero .lede{animation:rise .7s .18s ease both}
+.hero .lab{animation:rise .8s .28s ease both}
+.mini{display:block;width:100%;max-width:160px;height:auto;overflow:hidden}
+.mini .ln{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.mini .ln.s{stroke:var(--symp)} .mini .ln.p{stroke:var(--para)}
+.mini .sc{animation:scrollx var(--d,1s) linear infinite}
+@keyframes scrollx{to{transform:translateX(-70px)}}
+.eg0{fill:none;stroke:var(--ent-soft);stroke-width:12;stroke-linecap:round}
+.eg1{fill:none;stroke:var(--ent);stroke-width:12;stroke-linecap:round;stroke-dasharray:1 34;animation:gutflow 1.6s linear infinite}
+.egut{display:block;width:100%;height:auto;margin-bottom:18px}
+.egut .tube{fill:var(--surface);stroke:var(--ent);stroke-width:2.5}
+.egut .bol{fill:var(--ent)}
+.egut .mv{animation:bolus 4.6s ease-in-out infinite}
+@keyframes bolus{0%{transform:translateX(0)}100%{transform:translateX(220px)}}
+.egut .pinch{fill:none;stroke:var(--ent);stroke-width:3;stroke-linecap:round}
+.egut .nd{fill:var(--ent);transform-box:fill-box;transform-origin:center;animation:ndp 1.8s ease-in-out infinite}
+@keyframes ndp{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.4)}}
+.ra::after{display:inline-block;animation:nudge 1.4s ease-in-out infinite}
+.relay.s .ra::after{animation-duration:.9s}
+@keyframes nudge{50%{transform:translateX(5px)}}
+.hl.sy,.hl.pa,.hl.bs{animation:seglow 2.4s ease-in-out infinite}
+@keyframes seglow{0%,100%{opacity:1}50%{opacity:.55}}
+
+footer{padding-block:36px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .chain-f,.pn-f,.vflow,.heartv,.heart,.gutflow,.mini .sc,.eg1,.egut .mv,.egut .nd,.ra::after,.hl,.rv.in,.hero .eyebrow,.hero h1,.hero .lede,.hero .lab{animation:none!important}
+  *{transition:none!important}
+}
+</style>
+
+<header class="top">
+  <div class="wrap topin">
+    <a class="brand" href="#balance">ВНС</a>
+    <nav aria-label="Разделы">
+      <a href="#balance">Баланс</a><a href="#about">Отделы</a><a href="#path">Путь сигнала</a><a href="#centers">Центры</a><a href="#chem">Медиаторы</a><a href="#effects">Органы</a><a href="#vessels">Сосуды</a><a href="#enteric">Кишечник</a><a href="#reflex">Рефлекс</a><a href="#history">История</a><a href="#clinic">Клиника</a><a href="#breath">Дыхание</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ Баланс ============ -->
+<section class="hero" id="balance">
+  <div class="wrap">
+    <p class="eyebrow">Физиология · живой разбор</p>
+    <h1>Вегетативная нервная система</h1>
+    <p class="lede">Она работает без команд: разгоняет сердце, расширяет зрачки, запускает пищеварение. Двигайте ползунок и смотрите, как два отдела тянут организм в разные стороны.</p>
+
+    <div class="lab" id="lab">
+      <div class="dial">
+        <div class="poles">
+          <div class="pole p"><b>Парасимпатика</b><span>покой · пищеварение · сон</span></div>
+          <div class="pole s"><b>Симпатика</b><span>стресс · нагрузка · опасность</span></div>
+        </div>
+        <input id="bal" type="range" min="0" max="100" step="1" value="25" aria-label="Баланс между парасимпатикой и симпатикой">
+        <p class="mix" id="mix"></p>
+      </div>
+
+      <div class="chips" role="group" aria-label="Готовые ситуации">
+        <button class="chip" data-v="4" aria-pressed="false">Глубокий сон</button>
+        <button class="chip" data-v="20" aria-pressed="false">После обеда</button>
+        <button class="chip" data-v="42" aria-pressed="false">Работа за столом</button>
+        <button class="chip" data-v="68" aria-pressed="false">Перед экзаменом</button>
+        <button class="chip" data-v="97" aria-pressed="false">Бег от собаки</button>
+      </div>
+
+      <div class="tiles">
+        <article class="tile">
+          <svg viewBox="0 0 100 90" role="img" aria-label="Сердце"><path id="heart" class="heart" d="M50 80C10 52 6 22 28 14c12-4 20 4 22 10 2-6 10-14 22-10 22 8 18 38-22 66z"/></svg>
+          <h3 class="tname">Сердце</h3>
+          <p class="tval"><b id="hr">62</b> <small>уд/мин</small></p>
+          <p class="tcap" id="capH"></p>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 120 80" role="img" aria-label="Глаз">
+            <defs><clipPath id="eclip"><path d="M6 40C30 8 90 8 114 40C90 72 30 72 6 40Z"/></clipPath></defs>
+            <path class="eyeo" d="M6 40C30 8 90 8 114 40C90 72 30 72 6 40Z"/>
+            <g clip-path="url(#eclip)"><circle class="iris" cx="60" cy="40" r="25"/><circle id="pupil" class="pupil" cx="60" cy="40" r="13"/><circle cx="69" cy="31" r="3.5" fill="#fff" opacity=".85"/></g>
+          </svg>
+          <h3 class="tname">Зрачок</h3>
+          <p class="tval"><b id="pup">3,0</b> <small>мм</small></p>
+          <p class="tcap" id="capE"></p>
+        </article>
+        <article class="tile">
+          <svg id="bronch" class="bro" viewBox="0 0 120 90" fill="none" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Бронхи">
+            <path class="b0" d="M60 6V30"/><path class="b1" d="M60 30L36 50M60 30L84 50"/>
+            <path class="b2" d="M36 50L20 74M36 50L50 78M84 50L70 78M84 50L100 74"/>
+            <circle cx="20" cy="76" r="5"/><circle cx="50" cy="80" r="5"/><circle cx="70" cy="80" r="5"/><circle cx="100" cy="76" r="5"/>
+          </svg>
+          <h3 class="tname">Бронхи</h3>
+          <p class="tval word" id="bro">средний</p>
+          <p class="tcap" id="capB"></p>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 120 90" role="img" aria-label="Кишечник">
+            <path class="gut0" d="M8 45Q22 14 36 45T64 45T92 45T116 45"/>
+            <path id="gutflow" class="gutflow" d="M8 45Q22 14 36 45T64 45T92 45T116 45"/>
+          </svg>
+          <h3 class="tname">Кишечник</h3>
+          <p class="tval word" id="gutv">активна</p>
+          <p class="tcap" id="capG"></p>
+        </article>
+      </div>
+
+      <div class="ecg">
+        <div class="ecghead"><span class="tname">ЭКГ · схема</span><span class="tname" id="ecgbpm"></span></div>
+        <canvas id="ecg" role="img" aria-label="Схематичная электрокардиограмма, частота зависит от ползунка"></canvas>
+      </div>
+      <p class="note">Схема упрощена. Значения типичны для здорового взрослого и у разных людей отличаются. Диаметр зрачка зависит и от освещения, здесь освещение считается одинаковым.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Отделы ============ -->
+<section class="alt" id="about">
+  <div class="wrap">
+    <header class="sh">
+      <p class="eyebrow">Строение</p>
+      <h2>Автопилот организма</h2>
+      <p class="sub">Вегетативную, или автономную, нервную систему так называют потому, что она в основном работает без участия сознания. Она управляет гладкими мышцами внутренних органов и сосудов, сердцем и железами.</p>
+    </header>
+
+    <div class="divs">
+      <div class="div3">
+        <div><h3><span class="dot s"></span>Симпатический</h3><p class="mt">«Бей или беги»</p></div>
+        <p>Центры лежат в грудном и верхнем поясничном отделах спинного мозга (Th1–L2). Мобилизует ресурсы: учащает пульс, расширяет бронхи и зрачки, поднимает уровень глюкозы, перераспределяет кровь к мышцам и тормозит пищеварение.</p>
+        <svg class="mini" viewBox="0 0 140 60" aria-hidden="true"><g class="sc" style="--d:.7s"><path class="ln s" d="M0 30H12L17 8L24 52L30 30H70H82L87 8L94 52L100 30H140H152L157 8L164 52L170 30H210"/></g></svg>
+      </div>
+      <div class="div3">
+        <div><h3><span class="dot p"></span>Парасимпатический</h3><p class="mt">«Отдыхай и переваривай»</p></div>
+        <p>Центры лежат в стволе мозга и в крестцовых сегментах S2–S4. Экономит и восстанавливает: замедляет пульс, сужает зрачки, усиливает пищеварение, запускает опорожнение мочевого пузыря и кишки.</p>
+        <svg class="mini" viewBox="0 0 140 60" aria-hidden="true"><g class="sc" style="--d:3.2s"><path class="ln p" d="M0 30Q17.5 8 35 30T70 30T105 30T140 30T175 30T210 30"/></g></svg>
+      </div>
+      <div class="div3">
+        <div><h3><span class="dot e"></span>Энтеральный</h3><p class="mt">Нервная система кишки</p></div>
+        <p>Собственные нервные сплетения в стенке пищеварительной трубки. Управляют перистальтикой и секрецией и способны работать без команд из мозга. Симпатика и парасимпатика лишь корректируют их работу.</p>
+        <svg class="mini" viewBox="0 0 140 60" aria-hidden="true"><path class="eg0" d="M8 30Q22 8 36 30T64 30T92 30T120 30"/><path class="eg1" d="M8 30Q22 8 36 30T64 30T92 30T120 30"/></svg>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:28px">
+      <p>Большинство внутренних органов получает сигналы от обоих отделов, и эти сигналы чаще всего противоположны. Итоговый результат зависит от баланса, а не от включения одного отдела и выключения другого, поэтому в начале страницы ползунок, а не переключатель.</p>
+      <p>Только симпатическую иннервацию имеют большинство сосудов, потовые железы, мышцы, поднимающие волосы, и мозговое вещество надпочечников.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Путь сигнала ============ -->
+<section id="path">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <header class="sh">
+          <p class="eyebrow">Сигнал</p>
+          <h2>Два нейрона вместо одного</h2>
+        </header>
+        <div class="prose">
+          <p>Двигательный нерв скелетной мышцы идёт от спинного мозга прямо к мышце. Вегетативный путь всегда прерывается: сигнал передаётся с первого нейрона на второй в вегетативном узле (ганглии) и только потом идёт к органу.</p>
+          <p>Первое волокно называют преганглионарным, второе постганглионарным. Преганглионарные волокна покрыты миелином и проводят быстрее, постганглионарные без миелина. На схеме толстая линия означает миелин.</p>
+        </div>
+        <div class="cmp">
+          <div><b class="s-ink">Симпатика</b><span>Короткое преганглионарное волокно, узел рядом с позвоночником, длинное постганглионарное. Одно преганглионарное волокно связано со многими нейронами узла, поэтому ответ широкий и общий.</span></div>
+          <div><b class="p-ink">Парасимпатика</b><span>Длинное преганглионарное волокно, узел у самого органа или в его стенке, короткое постганглионарное. Связей меньше, ответ точнее.</span></div>
+        </div>
+        <p style="margin-top:20px"><button class="btn" id="replay" type="button">Запустить сигнал</button></p>
+        <p class="note" style="margin-top:10px">Скорости на схеме условные.</p>
+      </div>
+
+      <div class="diagram">
+        <svg id="pathsvg" viewBox="0 0 400 540" role="img" aria-label="Схема двухнейронного пути: симпатика с коротким преганглионарным и длинным постганглионарным волокном, парасимпатика наоборот">
+          <rect class="cnsS" x="14" y="12" width="172" height="46" rx="8"/>
+          <text class="tb" x="100" y="31" text-anchor="middle">Спинной мозг</text>
+          <text class="tm" x="100" y="48" text-anchor="middle">Th1–L2 · симпатика</text>
+          <rect class="cnsP" x="214" y="12" width="172" height="46" rx="8"/>
+          <text class="tb" x="300" y="31" text-anchor="middle">Ствол мозга и S2–S4</text>
+          <text class="tm" x="300" y="48" text-anchor="middle">парасимпатика</text>
+
+          <path id="sPre" class="fS" stroke-width="4.5" d="M100 58V126"/>
+          <path id="sPost" class="fS" stroke-width="2" d="M100 158C100 220 64 250 64 310S100 400 100 462"/>
+          <path id="pPre" class="fP" stroke-width="4.5" d="M300 58C300 150 336 190 336 260S300 340 300 402"/>
+          <path id="pPost" class="fP" stroke-width="2" d="M300 434V462"/>
+
+          <circle id="gS" class="node S" cx="100" cy="142" r="15"/>
+          <circle id="gP" class="node P" cx="300" cy="418" r="15"/>
+
+          <text class="tm" x="122" y="132">ганглий</text>
+          <text class="tm" x="122" y="146">у позвоночника</text>
+          <text class="tm" x="122" y="160">ACh → N</text>
+          <text class="tm" x="278" y="408" text-anchor="end">ганглий</text>
+          <text class="tm" x="278" y="422" text-anchor="end">у органа</text>
+          <text class="tm" x="278" y="436" text-anchor="end">ACh → N</text>
+
+          <text class="t" x="112" y="96">короткое</text>
+          <text class="t" x="86" y="300">длинное, без миелина</text>
+          <text class="t" x="322" y="258" text-anchor="end">длинное,</text>
+          <text class="t" x="322" y="274" text-anchor="end">с миелином</text>
+          <text class="t" x="316" y="452">короткое</text>
+
+          <rect id="oS" class="org S" x="14" y="462" width="172" height="58" rx="10"/>
+          <text class="tb" x="100" y="487" text-anchor="middle">Орган-мишень</text>
+          <text class="tm" x="100" y="505" text-anchor="middle">норадреналин · α, β</text>
+          <rect id="oP" class="org P" x="214" y="462" width="172" height="58" rx="10"/>
+          <text class="tb" x="300" y="487" text-anchor="middle">Орган-мишень</text>
+          <text class="tm" x="300" y="505" text-anchor="middle">ацетилхолин · M</text>
+
+          <circle id="dotS" class="pulse S" r="6" cx="100" cy="58"/>
+          <circle id="dotP" class="pulse P" r="6" cx="300" cy="58"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Центры ============ -->
+<section class="alt" id="centers">
+  <div class="wrap">
+    <header class="sh">
+      <p class="eyebrow">Анатомия</p>
+      <h2>Позвоночник и центры вегетативной системы</h2>
+      <p class="sub">Срединный разрез: череп со стволом мозга, позвонки с дисками, спинномозговой канал со спинным мозгом, симпатическая цепочка и крестцовые нервы. Нажимайте на цветные участки.</p>
+    </header>
+    <div class="split wide-l">
+      <div class="spine">
+        <svg id="spine" viewBox="0 0 420 820" role="group" aria-label="Срединный разрез черепа и позвоночника со спинным мозгом"></svg>
+        <p class="legend"><span><i class="lg" style="background:var(--symp)"></i>симпатика</span><span><i class="lg" style="background:var(--para)"></i>парасимпатика</span><span><i class="lg" style="background:var(--cord);border:1px solid var(--cord-line)"></i>остальной спинной мозг</span></p>
+      </div>
+      <div class="panel info stick" id="reginfo" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Медиаторы ============ -->
+<section id="chem">
+  <div class="wrap">
+    <header class="sh">
+      <p class="eyebrow">Химия</p>
+      <h2>Какой медиатор и на какой рецептор</h2>
+      <p class="sub">Орган отвечает не на «симпатику» вообще, а на конкретное вещество и конкретный рецептор. Поэтому лекарства могут включать или выключать отдельные эффекты.</p>
+    </header>
+
+    <div class="relays">
+      <div class="relay s">
+        <span class="rl s">Симпатика</span>
+        <span class="rn">Спинной мозг</span><span class="ra">ацетилхолин</span>
+        <span class="rn">Ганглий · N</span><span class="ra">норадреналин</span>
+        <span class="rn">Орган · α, β</span>
+      </div>
+      <div class="relay p">
+        <span class="rl p">Парасимпатика</span>
+        <span class="rn">Ствол мозга, S2–S4</span><span class="ra">ацетилхолин</span>
+        <span class="rn">Ганглий · N</span><span class="ra">ацетилхолин</span>
+        <span class="rn">Орган · M</span>
+      </div>
+    </div>
+
+    <dl class="recs">
+      <div><dt>N</dt><dd>Никотиновые. Стоят на нейронах всех вегетативных ганглиев и на клетках мозгового вещества надпочечников. Здесь работает ацетилхолин.</dd></div>
+      <div><dt>M</dt><dd>Мускариновые. Стоят на органах-мишенях парасимпатики и на потовых железах. Через них действует ацетилхолин, их блокирует атропин.</dd></div>
+      <div><dt>α1</dt><dd>Сужение сосудов, расширение зрачка, сжатие сфинктеров.</dd></div>
+      <div><dt>α2</dt><dd>Часто расположены на самих симпатических окончаниях и притормаживают выброс норадреналина. Работают как обратная связь.</dd></div>
+      <div><dt>β1</dt><dd>Сердце: частота и сила сокращений растут.</dd></div>
+      <div><dt>β2</dt><dd>Расширяют бронхи и сосуды скелетных мышц, запускают расщепление гликогена.</dd></div>
+      <div><dt>β3</dt><dd>Жировая ткань (расщепление жира) и расслабление стенки мочевого пузыря.</dd></div>
+    </dl>
+
+    <h3 style="margin-top:32px">Исключения из схемы</h3>
+    <ul class="excs">
+      <li><b>Потовые железы.</b> Иннервируются симпатикой, но постганглионарные волокна выделяют ацетилхолин и действуют на M-рецепторы.</li>
+      <li><b>Мозговое вещество надпочечников.</b> Преганглионарные симпатические волокна идут прямо к его клеткам, а те выбрасывают в кровь в основном адреналин и немного норадреналина. По сути это видоизменённый симпатический узел.</li>
+      <li><b>Расширение сосудов скелетных мышц.</b> Во время нагрузки сосуды мышц расширяются через β2, хотя сосуды кожи и кишки в это же время сужаются.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ Органы ============ -->
+<section class="alt" id="effects">
+  <div class="wrap">
+    <header class="sh">
+      <p class="eyebrow">Эффекты</p>
+      <h2>Что каждый отдел делает с органами</h2>
+    </header>
+    <div class="seg2" role="group" aria-label="Подсветка отдела">
+      <button class="chip" data-show="all" aria-pressed="true">Оба отдела</button>
+      <button class="chip" data-show="s" aria-pressed="false">Только симпатика</button>
+      <button class="chip" data-show="p" aria-pressed="false">Только парасимпатика</button>
+    </div>
+    <div class="fx" id="fx" data-show="all">
+      <div class="fxhead"><span class="tname">Орган</span><span class="tag s">Симпатика</span><span class="tag p">Парасимпатика</span></div>
+
+      <div class="fxrow"><div class="fxorg">Сердце</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Чаще и сильнее (β1).</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Реже (M2). На силу сокращений влияет слабо.</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Сосуды</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Сужает сосуды кожи, кишки и почек (α1), расширяет сосуды скелетных мышц (β2).</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Почти не иннервирует. Расширяет сосуды в отдельных зонах, например в половых органах.</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Бронхи</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Расширяет (β2).</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Сужает и усиливает выработку слизи (M3).</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Зрачок</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Расширяет (α1, мышца-дилататор).</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Сужает (M3, сфинктер зрачка). Ресничная мышца настраивает глаз на близкое расстояние.</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Слюнные железы</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Немного густой слюны, во рту сохнет.</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Много жидкой слюны (M3).</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Потовые железы</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Усиливает потоотделение через холинергические волокна.</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Не иннервирует.</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Желудок и кишечник</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Тормозит перистальтику и секрецию, сжимает сфинктеры.</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Усиливает перистальтику и секрецию, расслабляет сфинктеры.</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Печень</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Расщепляет гликоген и поднимает уровень глюкозы в крови.</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Способствует запасанию гликогена.</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Мочевой пузырь</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Расслабляет стенку и закрывает внутренний сфинктер, пузырь накапливает мочу.</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Сокращает стенку и открывает сфинктер, пузырь опорожняется.</span></div></div>
+
+      <div class="fxrow"><div class="fxorg">Надпочечники</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Мозговое вещество выбрасывает адреналин в кровь.</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Не иннервирует.</span></div></div>
+
+      <div class="fxrow" style="border-bottom:1px solid var(--line)"><div class="fxorg">Половые органы</div>
+        <div class="cell cs"><span class="tag s">Симпатика</span><span>Эякуляция.</span></div>
+        <div class="cell cp"><span class="tag p">Парасимпатика</span><span>Эрекция.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Сосуды ============ -->
+<section id="vessels">
+  <div class="wrap">
+    <header class="sh">
+      <p class="eyebrow">Кровоток</p>
+      <h2>Сосуды: куда симпатика направляет кровь</h2>
+      <p class="sub">Большинство сосудов получает только симпатические волокна. Меняя тонус гладких мышц в стенке, система за секунды перераспределяет кровь между органами. Выберите ситуацию и следите за потоком.</p>
+    </header>
+    <div class="seg2" role="group" aria-label="Ситуация">
+      <button class="chip" data-vs="rest" aria-pressed="true">Покой</button>
+      <button class="chip" data-vs="run" aria-pressed="false">Бег</button>
+      <button class="chip" data-vs="meal" aria-pressed="false">После обеда</button>
+      <button class="chip" data-vs="fear" aria-pressed="false">Сильный испуг</button>
+    </div>
+    <div class="split wide-l">
+      <div class="vfig">
+        <svg id="vtree" viewBox="0 0 320 560" role="img" aria-label="Схема артерий и вен тела: аорта, сосуды мозга, рук, кишечника, почек и ног с движущимся потоком крови"></svg>
+        <p class="legend"><span><i class="lg" style="background:var(--art)"></i>артерии</span><span><i class="lg" style="background:var(--ven)"></i>вены</span></p>
+      </div>
+      <div class="vside">
+        <div class="panel" id="vinfo" aria-live="polite"></div>
+        <h3>Доля сердечного выброса, ориентировочно</h3>
+        <div class="vbars" id="vbars"></div>
+        <p class="note">Цифры округлены и у разных людей различаются.</p>
+        <h3>Стенка артерии в разрезе</h3>
+        <div class="xrow">
+          <figure><div id="xs1"></div><figcaption><b>Артерия кожи и кишки</b><span>α1-рецепторы сужают просвет при росте симпатики.</span><span class="mono" id="xp1"></span></figcaption></figure>
+          <figure><div id="xs2"></div><figcaption><b>Артерия скелетной мышцы</b><span>β2-рецепторы расширяют просвет при росте адреналина.</span><span class="mono" id="xp2"></span></figcaption></figure>
+        </div>
+        <label class="rg" for="symv"><span>Активность симпатики</span><input id="symv" type="range" min="0" max="100" step="1" value="20"></label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Кишечная ============ -->
+<section id="enteric">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <header class="sh">
+          <p class="eyebrow">Третий отдел</p>
+          <h2>Нервная система, которой не нужен мозг</h2>
+        </header>
+        <div class="prose">
+          <p>В стенке пищеварительной трубки от пищевода до прямой кишки лежат сотни миллионов нейронов. Они образуют сплетения и содержат собственные чувствительные нейроны, интернейроны и двигательные нейроны.</p>
+          <p>Перистальтический рефлекс запускается местно: растяжение стенки кишки вызывает сокращение выше пищевого комка и расслабление ниже него. Блуждающий нерв усиливает эту работу, симпатика тормозит.</p>
+          <p>Иногда энтеральную систему называют «вторым мозгом». Это образное название, а не научный термин.</p>
+        </div>
+      </div>
+      <div class="entbox">
+        <svg class="egut" viewBox="0 0 320 100" role="img" aria-label="Перистальтика: комок пищи движется по кишке, за ним стенка сокращается">
+          <rect class="tube" x="10" y="32" width="300" height="40" rx="20"/>
+          <circle class="nd" cx="50" cy="22" r="3.5" style="animation-delay:0s"/>
+          <circle class="nd" cx="102" cy="22" r="3.5" style="animation-delay:.3s"/>
+          <circle class="nd" cx="154" cy="22" r="3.5" style="animation-delay:.6s"/>
+          <circle class="nd" cx="206" cy="22" r="3.5" style="animation-delay:.9s"/>
+          <circle class="nd" cx="258" cy="22" r="3.5" style="animation-delay:1.2s"/>
+          <g class="mv"><circle class="bol" cx="50" cy="52" r="12"/><path class="pinch" d="M26 36Q34 52 26 68"/><path class="pinch" d="M18 40Q24 52 18 64" opacity=".5"/></g>
+          <text class="tm" x="160" y="94" text-anchor="middle">Сокращение за комком, расслабление перед ним</text>
+        </svg>
+        <div class="plex">
+          <div><b>Межмышечное сплетение (Ауэрбаха)</b><span>Лежит между продольным и круговым слоями мышц. Управляет движением стенки, то есть перистальтикой.</span></div>
+          <div><b>Подслизистое сплетение (Мейснера)</b><span>Лежит в подслизистой основе. Управляет секрецией, всасыванием и кровотоком слизистой оболочки.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Рефлекс ============ -->
+<section class="alt" id="reflex">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <header class="sh">
+          <p class="eyebrow">Регуляция</p>
+          <h2>Барорефлекс: как организм держит давление</h2>
+          <p class="sub">Вегетативная система работает по принципу обратной связи. Выберите ситуацию и проследите цепочку.</p>
+        </header>
+        <div class="seg2" role="group" aria-label="Ситуация">
+          <button class="chip" data-sc="down" aria-pressed="true">Резко встали</button>
+          <button class="chip" data-sc="up" aria-pressed="false">Давление выросло</button>
+        </div>
+        <p class="note">Если рефлекс не успевает или ослаблен, при вставании темнеет в глазах и кружится голова.</p>
+      </div>
+      <div>
+        <ol class="chain down" id="chain"></ol>
+        <p class="result" id="chainres"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ История ============ -->
+<section id="history">
+  <div class="wrap">
+    <header class="sh">
+      <p class="eyebrow">История</p>
+      <h2>Как это открывали</h2>
+    </header>
+    <ol class="tl">
+      <li><span class="yr">1898</span><p>Английский физиолог Джон Ленгли предлагает термин «автономная нервная система» и описывает, как волокна переключаются в узлах.</p></li>
+      <li><span class="yr">1905</span><p>Ленгли выделяет парасимпатическую часть и противопоставляет её симпатической.</p></li>
+      <li><span class="yr">1915</span><p>Американский физиолог Уолтер Кеннон описывает реакцию «бей или беги» и роль адреналина в ней.</p></li>
+      <li><span class="yr">1921</span><p>Отто Леви соединяет два изолированных сердца лягушки общим раствором. Раздражение блуждающего нерва одного сердца замедляет и второе: нервы передают сигнал химическим веществом. В 1936 году Леви и Генри Дейл получили за это Нобелевскую премию.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ Клиника ============ -->
+<section class="alt" id="clinic">
+  <div class="wrap">
+    <header class="sh">
+      <p class="eyebrow">Клиника</p>
+      <h2>Когда вегетативная система сбоит</h2>
+    </header>
+    <dl class="clin">
+      <div><dt>Синдром Горнера</dt><dd>Повреждён симпатический путь к глазу. Признаки на одной стороне: опущенное веко, суженный зрачок, меньше потоотделения на лице.</dd></div>
+      <div><dt>Вазовагальный обморок</dt><dd>Блуждающий нерв внезапно оказывается слишком активным (боль, страх, духота, долгое стояние). Пульс замедляется, сосуды расширяются, давление падает. Помогает положение лёжа с приподнятыми ногами.</dd></div>
+      <div><dt>Ортостатическая гипотензия</dt><dd>При вставании давление падает и не успевает выровняться. Причины разные: обезвоживание, некоторые лекарства, нейропатия.</dd></div>
+      <div><dt>Диабетическая автономная нейропатия</dt><dd>При долгом повышении глюкозы повреждаются вегетативные волокна. Нарушаются пульс и давление, замедляется опорожнение желудка, страдает мочевой пузырь.</dd></div>
+    </dl>
+
+    <div class="drugs">
+      <h3>Лекарства, которые действуют на эту систему</h3>
+      <div class="drug"><b>Атропин</b><span>Блокирует M-рецепторы: расширяет зрачки, учащает пульс, сушит слизистые.</span></div>
+      <div class="drug"><b>Бета-блокаторы (например, метопролол)</b><span>Блокируют β-рецепторы: пульс реже, давление ниже.</span></div>
+      <div class="drug"><b>Сальбутамол</b><span>Возбуждает β2-рецепторы: расширяет бронхи при приступе астмы.</span></div>
+      <div class="drug" style="border-bottom:1px solid var(--line)"><b>Адреналин</b><span>Учащает пульс, сужает сосуды, расширяет бронхи. Применяют при тяжёлой аллергической реакции.</span></div>
+    </div>
+    <p class="warn">Страница учебная и не ставит диагнозы. При частых обмороках, сердцебиении или головокружении нужна консультация врача.</p>
+  </div>
+</section>
+
+<!-- ============ Дыхание ============ -->
+<section id="breath">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <header class="sh">
+          <p class="eyebrow">Практика</p>
+          <h2>Можно ли повлиять самому</h2>
+        </header>
+        <div class="prose">
+          <p>Дыхание единственная вегетативная функция, которой легко управлять сознательно. На выдохе активность блуждающего нерва растёт и пульс замедляется, на вдохе пульс чуть учащается. Это называют дыхательной аритмией, и она у здорового человека нормальна.</p>
+          <p>Медленное дыхание примерно шесть раз в минуту с более долгим выдохом увеличивает вариабельность сердечного ритма и считается мягким способом усилить влияние блуждающего нерва. Эффект умеренный. Попробуйте две минуты.</p>
+          <p class="note">Если закружилась голова, вернитесь к обычному дыханию.</p>
+        </div>
+      </div>
+      <div class="breath">
+        <div class="bstage">
+          <div class="bring"></div>
+          <div id="bcircle"></div>
+          <div class="btxt"><span id="blabel">Готовы?</span><span id="bsec">4 / 6</span></div>
+        </div>
+        <div class="brow">
+          <button class="btn" id="bbtn" type="button">Начать</button>
+          <button class="btn ghost" id="bres" type="button">Сначала</button>
+          <span class="btot" id="btot">0:00</span>
+        </div>
+        <p class="note">Вдох 4 секунды, выдох 6 секунд.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+</main>
+
+<footer>
+  <div class="wrap">Учебный материал по общепринятым данным физиологии. Значения упрощены и даны для здорового взрослого человека. Для экзамена сверяйтесь со своим учебником.</div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var $=function(s,r){return (r||document).querySelector(s)};
+var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var NS='http://www.w3.org/2000/svg';
+function tok(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+function hex(h){h=h.replace('#','');if(h.length===3)h=h.split('').map(function(c){return c+c}).join('');return[parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]}
+function mixc(a,b,t){try{var A=hex(a),B=hex(b);return 'rgb('+A.map(function(v,i){return Math.round(v+(B[i]-v)*t)}).join(',')+')'}catch(e){return a}}
+function inView(el,cb){
+  if(!('IntersectionObserver' in window)){cb(true);return}
+  new IntersectionObserver(function(es){cb(es[0].isIntersecting)},{threshold:0.05}).observe(el);
+}
+
+/* ---------- Баланс ---------- */
+var lab=$('#lab'),bal=$('#bal'),heart=$('#heart'),pupil=$('#pupil'),bronch=$('#bronch'),gutflow=$('#gutflow');
+var hrEl=$('#hr'),pupEl=$('#pup'),broEl=$('#bro'),gutEl=$('#gutv');
+var capH=$('#capH'),capE=$('#capE'),capB=$('#capB'),capG=$('#capG'),mixEl=$('#mix'),ecgbpm=$('#ecgbpm');
+var chips=$$('.chip[data-v]');
+var bpm=60,tNow=.25,raf0=0;
+function pick(t,a){return t<.35?a[0]:t<.65?a[1]:a[2]}
+function apply(v){
+  var t=v/100;tNow=t;
+  bpm=Math.round(55+115*Math.pow(t,1.6));
+  var mm=2.5+5*t;
+  lab.style.setProperty('--tp',(t*100).toFixed(1)+'%');
+  heart.style.setProperty('--beat',(60/bpm).toFixed(3)+'s');
+  pupil.style.transform='scale('+(mm/5).toFixed(3)+')';
+  bronch.style.setProperty('--bw',(2.2+3*t).toFixed(2));
+  gutflow.style.setProperty('--gdur',(1.4+7*t).toFixed(2)+'s');
+  gutflow.style.opacity=(1-.8*t).toFixed(2);
+  gutflow.style.animationPlayState=t>.9?'paused':'running';
+  hrEl.textContent=bpm;
+  pupEl.textContent=mm.toFixed(1).replace('.',',');
+  broEl.textContent=pick(t,['уже','средний','шире']);
+  gutEl.textContent=pick(t,['активна','умеренная','подавлена']);
+  capH.textContent=pick(t,['Блуждающий нерв тормозит сердце','Влияния уравновешены','Симпатика разгоняет сердце']);
+  capE.textContent=pick(t,['Сфинктер сжимает зрачок','Зрачок средней ширины','Дилататор растягивает зрачок']);
+  capB.textContent=pick(t,['Мышцы бронхов сокращены, слизи больше','Просвет в норме','Мышцы бронхов расслаблены, дышать легче']);
+  capG.textContent=pick(t,['Перистальтика и сок усилены','Обычный режим работы','Кровь уходит к мышцам, пищеварение тормозится']);
+  mixEl.textContent='Условный перевес: парасимпатика '+(100-Math.round(v))+'% · симпатика '+Math.round(v)+'%';
+  ecgbpm.textContent=bpm+' уд/мин';
+  chips.forEach(function(c){c.setAttribute('aria-pressed',Math.abs(+c.dataset.v-v)<=3?'true':'false')});
+  if(reduce)ecgStatic();
+}
+function go(to){
+  cancelAnimationFrame(raf0);
+  if(reduce){bal.value=to;apply(to);return}
+  var from=+bal.value,t0=performance.now(),d=700;
+  (function step(n){
+    var k=Math.min(1,(n-t0)/d),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    var v=Math.round(from+(to-from)*e);
+    bal.value=v;apply(v);
+    if(k<1)raf0=requestAnimationFrame(step);
+  })(t0);
+}
+bal.addEventListener('input',function(){cancelAnimationFrame(raf0);apply(+bal.value)});
+chips.forEach(function(c){c.addEventListener('click',function(){go(+c.dataset.v)})});
+
+/* ---------- ЭКГ ---------- */
+var cv=$('#ecg'),cx=cv.getContext('2d');
+var W=300,H=96,buf=[],dpr=1,phase=0,pps=140,lastT=0,acc=0,cS='#E0446C',cP='#4F43B8',cL='#D8D5E8',ecgRaf=0,ecgOn=false,frames=0;
+function colors(){cS=tok('--symp')||cS;cP=tok('--para')||cP;cL=tok('--line')||cL}
+function wave(p){
+  function g(c,w,a){return a*Math.exp(-Math.pow((p-c)/w,2))}
+  return g(.12,.035,.12)+g(.235,.011,-.14)+g(.26,.013,1)+g(.285,.012,-.28)+g(.5,.06,.26);
+}
+function pushN(n){for(var i=0;i<n;i++){phase+=(bpm/60)/pps;if(phase>=1)phase-=1;buf.push(wave(phase));buf.shift()}}
+function sizeEcg(){
+  var r=cv.getBoundingClientRect();dpr=window.devicePixelRatio||1;
+  W=Math.max(120,Math.floor(r.width));
+  cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0);
+  while(buf.length<W)buf.unshift(0);
+  if(buf.length>W)buf=buf.slice(buf.length-W);
+  drawEcg();
+}
+function drawEcg(){
+  cx.clearRect(0,0,W,H);
+  cx.strokeStyle=cL;cx.globalAlpha=.55;cx.lineWidth=1;cx.beginPath();
+  for(var gx=0;gx<W;gx+=28){cx.moveTo(gx+.5,0);cx.lineTo(gx+.5,H)}
+  for(var gy=0;gy<H;gy+=24){cx.moveTo(0,gy+.5);cx.lineTo(W,gy+.5)}
+  cx.stroke();cx.globalAlpha=1;
+  cx.strokeStyle=mixc(cP,cS,tNow);cx.lineWidth=2.2;cx.lineJoin='round';cx.beginPath();
+  for(var i=0;i<buf.length;i++){var y=H*.74-buf[i]*H*.62;if(i===0)cx.moveTo(i,y);else cx.lineTo(i,y)}
+  cx.stroke();
+  var ly=H*.74-buf[buf.length-1]*H*.62;
+  cx.fillStyle=mixc(cP,cS,tNow);cx.beginPath();cx.arc(buf.length-3,ly,3.5,0,6.283);cx.fill();
+}
+function ecgStatic(){phase=0;pushN(W);drawEcg()}
+function ecgLoop(n){
+  if(!ecgOn)return;
+  var dt=Math.min(.05,(n-lastT)/1000);lastT=n;
+  acc+=dt*pps;var k=Math.floor(acc);acc-=k;pushN(k);
+  if(++frames%90===0)colors();
+  drawEcg();
+  ecgRaf=requestAnimationFrame(ecgLoop);
+}
+colors();sizeEcg();pushN(W);
+if('ResizeObserver' in window)new ResizeObserver(function(){sizeEcg()}).observe(cv);else window.addEventListener('resize',sizeEcg);
+if(window.matchMedia){try{window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){colors();drawEcg()})}catch(e){}}
+new MutationObserver(function(){colors();drawEcg()}).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+if(!reduce){inView(cv,function(v){ecgOn=v;if(v){lastT=performance.now();cancelAnimationFrame(ecgRaf);ecgRaf=requestAnimationFrame(ecgLoop)}else cancelAnimationFrame(ecgRaf)})}
+apply(+bal.value);
+
+/* ---------- Путь сигнала ---------- */
+(function(){
+  var svg=$('#pathsvg');if(!svg)return;
+  var R=[
+    {dot:$('#dotS'),segs:[[$('#sPre'),150],[$('#sPost'),70]],nodes:[$('#gS'),$('#oS')]},
+    {dot:$('#dotP'),segs:[[$('#pPre'),150],[$('#pPost'),70]],nodes:[$('#gP'),$('#oP')]}
+  ];
+  R.forEach(function(r){
+    r.lens=r.segs.map(function(s){return s[0].getTotalLength()});
+    r.times=r.segs.map(function(s,i){return r.lens[i]/s[1]});
+    r.T=r.times.reduce(function(a,b){return a+b},0);
+  });
+  var LOOP=7.5,t0=performance.now(),raf=0,vis=true;
+  function render(u){
+    R.forEach(function(r){
+      var acc=0,seg=-1,i;
+      for(i=0;i<r.segs.length;i++){if(u<acc+r.times[i]){seg=i;break}acc+=r.times[i]}
+      if(seg>=0){
+        var f=(u-acc)/r.times[seg];
+        var p=r.segs[seg][0].getPointAtLength(f*r.lens[seg]);
+        r.dot.setAttribute('cx',p.x);r.dot.setAttribute('cy',p.y);r.dot.style.opacity=1;
+      }else r.dot.style.opacity=0;
+      var a=r.times[0],b=r.T;
+      r.nodes[0].classList.toggle('hit',u>=a&&u<a+.9);
+      r.nodes[1].classList.toggle('hit',u>=b&&u<b+.9);
+    });
+  }
+  function frame(n){
+    var u=(n-t0)/1000;
+    if(reduce){if(u>=LOOP){render(LOOP);raf=0;return}}else u=u%LOOP;
+    render(u);raf=requestAnimationFrame(frame);
+  }
+  function start(){if(!raf)raf=requestAnimationFrame(frame)}
+  function stop(){cancelAnimationFrame(raf);raf=0}
+  $('#replay').addEventListener('click',function(){t0=performance.now();start()});
+  render(reduce?0.8:0);
+  inView(svg,function(v){vis=v;if(reduce)return;if(v)start();else stop()});
+})();
+
+/* ---------- Позвоночник ---------- */
+(function(){
+  var svg=$('#spine');if(!svg)return;
+  var S=0.85,X0=236,Y0=196;
+  var info={
+    bs:{t:'Ствол мозга',m:'Парасимпатика · черепные нервы',b:'Парасимпатические ядра дают начало четырём черепным нервам. III (глазодвигательный) сужает зрачок и настраивает глаз на близкое. VII (лицевой) управляет слёзными и частью слюнных желёз. IX (языкоглоточный) управляет околоушной железой. X (блуждающий) идёт к сердцу, лёгким и большей части пищеварительной трубки до области левого изгиба ободочной кишки.'},
+    s:{t:'Боковые рога Th1–L2',m:'Симпатика · спинной мозг и цепочка',b:'Тела преганглионарных симпатических нейронов лежат в боковых рогах серого вещества сегментов Th1–L2. Волокна выходят с передними корешками и идут к симпатической цепочке, которая тянется вдоль позвоночника с обеих сторон. Обратите внимание на тонкие линии: спинной мозг короче позвоночника и заканчивается на уровне L1–L2, поэтому сегменты лежат выше позвонков с теми же номерами, и волокна идут к цепочке вниз. Волокна для головы поднимаются по цепочке к верхнему шейному узлу, потому что в шейных сегментах своих симпатических нейронов нет.'},
+    p:{t:'Сегменты S2–S4',m:'Парасимпатика · тазовые нервы',b:'Крестцовые парасимпатические нейроны лежат в сегментах S2–S4, которые находятся на уровне позвонков Th12–L1, то есть высоко над крестцом. Их волокна спускаются вниз в составе конского хвоста, выходят через передние крестцовые отверстия и образуют тазовые внутренностные нервы. Они идут к нисходящей ободочной и прямой кишке, мочевому пузырю и половым органам и запускают опорожнение пузыря и кишки.'},
+    n:{t:'Остальной спинной мозг',m:'Нет вегетативных боковых рогов',b:'В шейных, нижних поясничных и остальных крестцовых сегментах нет своих преганглионарных вегетативных нейронов. Через них проходят сигналы к скелетным мышцам и чувствительные пути. Нервные корешки ниже конца мозга образуют конский хвост.'}
+  };
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  function f2(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}
+  function cl(v,a,b){return Math.max(a,Math.min(b,v))}
+
+  /* параметры позвонков */
+  var N=24,V=[],i;
+  for(i=0;i<N;i++){
+    var v={};
+    if(i<7){v.bh=11+i*.45;v.bw=19+i*1.1;v.disc=3;v.rc=8;v.spl=(i===0?5:i===1?13:i===6?22:13);v.ang=(i===6?4:10)}
+    else if(i<19){var t=i-7;v.bh=15+t*.55;v.bw=27+t;v.disc=4;v.rc=7;v.spl=(t>8?22:26);v.ang=(t<9?34-t*.6:14)}
+    else{var u=i-19;v.bh=25+u*.6;v.bw=44+u*1.2;v.disc=7;v.rc=9;v.spl=22;v.ang=0}
+    ['bh','bw','disc','rc','spl'].forEach(function(k){v[k]*=S});
+    V.push(v);
+  }
+  V[0].y=Y0;
+  for(i=1;i<N;i++)V[i].y=V[i-1].y+(V[i-1].bh+V[i].bh)/2+V[i-1].disc;
+  var SC0=23.55,SC1=28.4;
+  function lv(idx,key){idx=cl(idx,0,N-1);var a=Math.floor(idx),b=Math.min(a+1,N-1),f=idx-a;return V[a][key]*(1-f)+V[b][key]*f}
+  function sacT(idx){return cl((idx-SC0)/(SC1-SC0),0,1)}
+  function getBw(idx){return idx<SC0?lv(idx,'bw'):(47-40*Math.pow(sacT(idx),1.05))*S}
+  function getRc(idx){return idx<SC0?lv(idx,'rc'):(9-6*sacT(idx))*S}
+  function yAt(idx){
+    if(idx<=0)return V[0].y+idx*(V[0].bh+V[0].disc);
+    if(idx>=N-1)return V[N-1].y+(idx-(N-1))*(V[N-1].bh+V[N-1].disc)*.95;
+    var a=Math.floor(idx),f=idx-a;return V[a].y+(V[a+1].y-V[a].y)*f;
+  }
+  var KEY=[[-3,7],[0,0],[3.5,-12],[6.5,-4],[10,10],[13,19],[16.5,11],[19.5,-5],[22,-17],[23.6,-10],[25.5,8],[27.5,18],[30,13]];
+  function sl(j){var a=KEY[Math.max(j-1,0)],b=KEY[Math.min(j+1,KEY.length-1)];return (b[1]-a[1])/(b[0]-a[0])}
+  function xAt(t){
+    var k=0;while(k<KEY.length-2&&t>=KEY[k+1][0])k++;
+    var p0=KEY[k],p1=KEY[k+1],h=p1[0]-p0[0],s=(t-p0[0])/h,s2=s*s,s3=s2*s,m0=sl(k),m1=sl(k+1);
+    return X0+(2*s3-3*s2+1)*p0[1]+(s3-2*s2+s)*h*m0+(-2*s3+3*s2)*p1[1]+(s3-s2)*h*m1;
+  }
+  function fr(idx){
+    var e=.04,k=(xAt(idx+e)-xAt(idx-e))/(yAt(idx+e)-yAt(idx-e)),n=Math.sqrt(1+k*k);
+    return {x:xAt(idx),y:yAt(idx),nx:1/n,ny:-k/n,a:-Math.atan(k)*180/Math.PI};
+  }
+  function pt(idx,off){var f=fr(idx);return [f.x+off*f.nx,f.y+off*f.ny]}
+  function ribbon(a,b,wf,st){
+    st=st||.1;var L=[],R=[],t,n=Math.round((b-a)/st),j;
+    for(j=0;j<=n;j++){t=a+(b-a)*j/n;var w=wf(t)/2;L.push(pt(t,-w));R.push(pt(t,w))}
+    return 'M'+L.map(f2).join('L')+'L'+R.reverse().map(f2).join('L')+'Z';
+  }
+  function tf(idx){var f=fr(idx);return 'translate('+f.x.toFixed(1)+','+f.y.toFixed(1)+') rotate('+f.a.toFixed(2)+')'}
+
+  /* defs */
+  var defs=el('defs',{},svg);
+  var gr=el('linearGradient',{id:'gBone',x1:'0',y1:'0',x2:'1',y2:'0'},defs);
+  el('stop',{offset:'0',style:'stop-color:var(--bone-d)'},gr);
+  el('stop',{offset:'.45',style:'stop-color:var(--bone)'},gr);
+  el('stop',{offset:'1',style:'stop-color:var(--bone-d)'},gr);
+
+  /* направляющие и скобки справа и слева */
+  var gl=el('g',{},svg);
+  var CSEG=[
+    {a:0,b:7.5,l:'C1–C8',c:'var(--muted)'},
+    {a:7.5,b:17.72,l:'Th1–L2',c:'var(--symp-ink)'},
+    {a:17.72,b:18.95,l:'L3–S1',c:'var(--muted)'},
+    {a:19.02,b:19.62,l:'S2–S4',c:'var(--para-ink)'}
+  ];
+  CSEG.forEach(function(s){
+    var y1=yAt(s.a),y2=yAt(s.b),ym=(y1+y2)/2,xm=xAt((s.a+s.b)/2);
+    el('line',{x1:xm+9,y1:ym,x2:322,y2:ym,'class':'lead'},gl);
+    el('path',{d:'M326,'+y1.toFixed(1)+'V'+y2.toFixed(1),'class':'brace',style:'stroke:'+s.c},gl);
+    var tx=el('text',{x:334,y:(ym+4).toFixed(1),'class':'tm',style:'fill:'+s.c},gl);tx.textContent=s.l;
+  });
+  var hd=el('text',{x:326,y:(yAt(0)-34).toFixed(1),'class':'tm'},gl);hd.textContent='сегменты';
+  var hd2=el('text',{x:326,y:(yAt(0)-22).toFixed(1),'class':'tm'},gl);hd2.textContent='мозга';
+  var VG=[{a:-.5,b:6.5,n:'Шейные',r:'C1–C7'},{a:6.5,b:18.5,n:'Грудные',r:'Th1–Th12'},{a:18.5,b:23.5,n:'Поясничные',r:'L1–L5'},{a:23.6,b:28.4,n:'Крестец',r:'S1–S5'}];
+  VG.forEach(function(g){
+    var y1=yAt(g.a)+2,y2=yAt(g.b)-2,ym=(y1+y2)/2;
+    el('path',{d:'M76,'+y1.toFixed(1)+'V'+y2.toFixed(1),'class':'brace',style:'stroke:var(--line)'},gl);
+    var t1=el('text',{x:68,y:(ym-2).toFixed(1),'class':'tb2','text-anchor':'end'},gl);t1.textContent=g.n;
+    var t2=el('text',{x:68,y:(ym+12).toFixed(1),'class':'tm','text-anchor':'end'},gl);t2.textContent=g.r;
+  });
+  var vh=el('text',{x:68,y:(yAt(0)-22).toFixed(1),'class':'tm','text-anchor':'end'},gl);vh.textContent='позвонки';
+
+  /* рёбра */
+  var gr2=el('g',{},svg);
+  var RL=[55,70,85,100,112,118,120,116,108,92,52,38];
+  for(i=7;i<19;i++){
+    var vv=V[i],ff=fr(i),L=RL[i-7]*S,rc=vv.rc,h2=vv.bh/2,xp=-(rc+2*S);
+    var d='M'+(xp+2)+','+(-h2*.2)+' C'+(rc+11*S)+','+(-h2*.2)+' '+(rc+13*S)+','+(4*S)+' '+(rc+3*S)+','+(10*S)
+      +' C'+(xp-L*.3)+','+(L*.38)+' '+(xp-L*.7)+','+(L*.5)+' '+(xp-L)+','+(L*.64);
+    var rb=el('path',{d:d,'class':'rib',transform:tf(i)},gr2);
+  }
+
+  /* череп и ствол мозга */
+  var P0=pt(-0.6,0);
+  var gsk=el('g',{transform:'translate('+P0[0].toFixed(1)+','+P0[1].toFixed(1)+') scale('+S+') translate(-236,-190)'},svg);
+  el('path',{d:'M240,192 C290,188 322,148 318,98 C314,38 262,12 204,16 C142,22 100,64 98,120 C97,142 103,156 112,164 L114,182 L152,190 Z','class':'bn'},gsk);
+  el('path',{d:'M112,164 L102,182 L108,204 L126,212 L150,208 L166,196 L170,188 L152,190 L114,182 Z','class':'bn'},gsk);
+  el('path',{d:'M146,208 L142,236 Q172,252 204,238 L226,206 L214,198 L196,206 L168,210 Z','class':'bn'},gsk);
+  el('circle',{cx:128,cy:152,r:9,'class':'orb'},gsk);
+  el('path',{d:'M236,184 C282,180 308,146 305,100 C301,48 258,26 206,30 C150,36 114,72 112,118 C111,140 124,160 150,174 C170,182 200,186 236,184 Z','class':'brain'},gsk);
+  el('ellipse',{cx:264,cy:152,rx:34,ry:22,'class':'cereb'},gsk);
+  el('path',{d:'M150,60 C190,48 240,56 270,86 M130,100 C170,84 230,92 262,122','class':'gyri'},gsk);
+  var gBS=el('g',{},gsk);
+  var bx0=236,by0=190,bx1=210,by1=106,dx=bx1-bx0,dy=by1-by0,len=Math.sqrt(dx*dx+dy*dy),ux=dx/len,uy=dy/len,nx_=-uy,ny_=ux;
+  var Lp=[],Rp=[],j;
+  for(j=0;j<=24;j++){
+    var tt=j/24,w=10+8*tt+10*Math.exp(-Math.pow((tt-.55)/.16,2));
+    var cx_=bx0+dx*tt,cy_=by0+dy*tt;
+    Lp.push([cx_+nx_*w/2,cy_+ny_*w/2]);Rp.push([cx_-nx_*w/2,cy_-ny_*w/2]);
+  }
+  var bsHit=el('path',{d:'M'+Lp.map(f2).join('L')+'L'+Rp.reverse().map(f2).join('L')+'Z','class':'hl bs'},gBS);
+  [['III',.82],['VII',.5],['IX',.3],['X',.12]].forEach(function(n){
+    var cx_=bx0+dx*n[1]+6,cy_=by0+dy*n[1];
+    el('circle',{cx:cx_,cy:cy_,r:2.6,'class':'nuc'},gBS);
+    var tx=el('text',{x:cx_+8,y:cy_+3,'class':'tm9'},gBS);tx.textContent=n[0];
+  });
+  var stl=el('text',{x:150,y:150,'class':'tm9'},gBS);stl.textContent='ствол мозга';
+
+  /* диски и позвонки */
+  var gv=el('g',{},svg);
+  function disc(idx,th){
+    var rc=getRc(idx),bw=getBw(idx),g=el('g',{transform:tf(idx)},gv);
+    el('rect',{x:(-(rc+2*S)-bw+.5).toFixed(1),y:(-th/2).toFixed(1),width:(bw-1).toFixed(1),height:th.toFixed(1),rx:2,'class':'disc'},g);
+  }
+  for(i=0;i<N-1;i++)disc(i+.5,V[i].disc+1.2);
+  disc(23.49,5);
+  function vert(i){
+    var v=V[i],g=el('g',{transform:tf(i)},gv),rc=v.rc,bw=v.bw,h2=v.bh/2,xp=-(rc+2*S),xa=xp-bw,tt=3.4*S;
+    var th=v.ang*Math.PI/180,sx=rc+4*S+v.spl*Math.cos(th),sy=h2*.1+v.spl*Math.sin(th);
+    el('path',{d:'M'+(rc+3*S)+','+(-h2*.5)+'L'+sx.toFixed(1)+','+(sy-2.2*S).toFixed(1)+'L'+sx.toFixed(1)+','+(sy+2.2*S).toFixed(1)+'L'+(rc+3*S)+','+(h2*.35)+'Z','class':'bn'},g);
+    if(i>0)el('ellipse',{cx:((xp+rc)/2+3).toFixed(1),cy:(-h2*.95-2.5*S).toFixed(1),rx:(7*S).toFixed(1),ry:(3.4*S).toFixed(1),'class':'bn'},g);
+    el('path',{d:'M'+xp+','+(-h2)+'L'+(rc+4*S)+','+(-h2*.7)+'L'+(rc+4*S)+','+(h2*.7)+'L'+xp+','+h2+'L'+xp+','+(h2-tt)+'L'+(rc+.5*S)+','+(h2*.7-tt*.8)+'L'+(rc+.5*S)+','+(-h2*.7+tt*.8)+'L'+xp+','+(-h2+tt)+'Z','class':'bn'},g);
+    el('path',{d:'M'+xp+','+(-h2)+'L'+(xa+3)+','+(-h2)+'Q'+xa+','+(-h2)+' '+xa+','+(-h2+3)+'Q'+(xa+2.5)+',0 '+xa+','+(h2-3)+'Q'+xa+','+h2+' '+(xa+3)+','+h2+'L'+xp+','+h2+'Z','class':'bn'},g);
+  }
+  for(i=0;i<N;i++)vert(i);
+
+  /* крестец и копчик */
+  (function(){
+    var A=[],P=[],t;
+    for(t=SC0;t<=SC1+1e-6;t+=.15){var rc=getRc(t),bw=getBw(t);A.push(pt(t,-(rc+2*S+bw)));P.push(pt(t,rc+7*S))}
+    el('path',{d:'M'+A.map(f2).join('L')+'L'+P.reverse().map(f2).join('L')+'Z','class':'bn'},gv);
+    el('path',{d:ribbon(SC0+.05,SC1-.35,function(t){return 2*getRc(t)*.9},.15),'class':'canal'},gv);
+    [24.5,25.5,26.5,27.4].forEach(function(f){
+      var p=pt(f,-(getRc(f)+2*S+getBw(f)*.5)),e=el('ellipse',{cx:p[0].toFixed(1),cy:p[1].toFixed(1),rx:3,ry:2,'class':'canal'},gv);
+    });
+    [[28.7,5],[29.1,4],[29.45,3]].forEach(function(c){
+      var p=pt(c[0],0);el('ellipse',{cx:p[0].toFixed(1),cy:p[1].toFixed(1),rx:(c[1]*S+1).toFixed(1),ry:(c[1]*.55+1).toFixed(1),'class':'bn',transform:'rotate(-20 '+p[0].toFixed(1)+' '+p[1].toFixed(1)+')'},gv);
+    });
+  })();
+
+  /* конский хвост */
+  var gcq=el('g',{},svg);
+  function strand(i0,o0,i1,o1){var pts=[],n=26,k;for(k=0;k<=n;k++){var u=k/n;pts.push(pt(i0+(i1-i0)*u,o0+(o1-o0)*u*u))}return pts}
+  [[-4,22],[-3,23.3],[-2,24.1],[-1,25],[0,25.9],[1,27],[2,26.2],[3,24.6],[4,23.6]].forEach(function(s){
+    el('path',{d:'M'+strand(19.7,s[0],s[1],s[0]*.9).map(f2).join('L'),'class':'cq'},gcq);
+  });
+
+  /* регионы */
+  var groups={};
+  function reg(k){var g=el('g',{'class':'reg reg-'+k,tabindex:'0',role:'button','aria-label':info[k].t+'. '+info[k].m},svg);g.dataset.k=k;groups[k]=g;return g}
+  groups.bs=gBS;gBS.setAttribute('class','reg reg-bs');gBS.setAttribute('tabindex','0');gBS.setAttribute('role','button');gBS.setAttribute('aria-label',info.bs.t+'. '+info.bs.m);gBS.dataset.k='bs';
+  function cw(t){
+    var w=7.5+3*Math.exp(-Math.pow((t-5.8)/1.3,2))+3.2*Math.exp(-Math.pow((t-17.5)/.9,2));
+    if(t>19)w*=Math.max(.15,1-(t-19)/.95);return w;
+  }
+  var gN=reg('n');
+  el('path',{d:ribbon(-.6,19.95,cw,.1),'class':'cord hl'},gN);
+  el('path',{d:ribbon(0,19,function(t){return cw(t)+14},.2),'class':'hit'},gN);
+  for(i=1;i<=7;i++){var ptk=pt(i-.5,0);}
+  var sA=7.5,sB=17.72;
+  function cwSub(a,b){return function(t){return cw(t)*.98}}
+  var gS=reg('s');
+  el('path',{d:ribbon(sA,sB,cw,.1),'class':'hl sy'},gS);
+  el('path',{d:ribbon(sA,sB,function(t){return cw(t)+14},.2),'class':'hit'},gS);
+  /* цепочка */
+  var GANG=[1.2,4.6,7,8,9,10,11,12,13,14,15,16,17,18,19.4,20.6,21.8,23,24.6,25.6,26.5,27.3];
+  function chainPt(idx){return pt(idx,-(getRc(idx)+2*S+getBw(idx)+7*S))}
+  var cpts=GANG.map(chainPt);
+  el('path',{d:'M'+cpts.map(f2).join('L'),'class':'chain-l'},gS);
+  el('path',{d:'M'+cpts.map(f2).join('L'),'class':'chain-f'},gS);
+  /* rami */
+  var cseg=[],k2;
+  for(k2=0;k2<12;k2++)cseg.push([7.5+k2*.79+.4,7+k2]);
+  cseg.push([17.18,19.4]);cseg.push([17.54,20.6]);
+  cseg.forEach(function(s){
+    var c=pt(s[0],-4*S),g=chainPt(s[1]);
+    el('path',{d:'M'+f2(c)+'Q'+((c[0]+g[0])/2-6).toFixed(1)+','+((c[1]+g[1])/2).toFixed(1)+' '+f2(g),'class':'ramus'},gS);
+  });
+  cpts.forEach(function(p,ix){el('circle',{cx:p[0].toFixed(1),cy:p[1].toFixed(1),r:(ix<3?3.6:2.8),'class':'gang'},gS)});
+  var cl1=chainPt(22.6);
+  var ct1=el('text',{x:(cl1[0]-8).toFixed(1),y:(cl1[1]-2).toFixed(1),'class':'tm','text-anchor':'end',style:'fill:var(--symp-ink)'},gS);ct1.textContent='симпатическая';
+  var ct2=el('text',{x:(cl1[0]-8).toFixed(1),y:(cl1[1]+11).toFixed(1),'class':'tm','text-anchor':'end',style:'fill:var(--symp-ink)'},gS);ct2.textContent='цепочка';
+
+  var gP=reg('p');
+  el('path',{d:ribbon(19.02,19.62,cw,.05),'class':'hl pa'},gP);
+  var cc=pt(19.3,0);
+  el('circle',{cx:cc[0].toFixed(1),cy:cc[1].toFixed(1),r:15,'class':'hit'},gP);
+  var lastEnd=null;
+  [[25.5,.6],[26.5,0],[27.4,-.6]].forEach(function(s,ix){
+    var f=s[0],pts=strand(19.45,s[1],f,-getRc(f)*.6);
+    var F=pt(f,-(getRc(f)+2*S+getBw(f)*.5)),end=[F[0]-72,F[1]+34+ix*3];
+    var d='M'+pts.map(f2).join('L')+'L'+f2(F)+'Q'+(F[0]-34).toFixed(1)+','+(F[1]+8).toFixed(1)+' '+f2(end);
+    el('path',{d:d,'class':'pn'},gP);
+    el('path',{d:d,'class':'pn-f'},gP);
+    el('circle',{cx:end[0].toFixed(1),cy:end[1].toFixed(1),r:3.2,'class':'gang pg'},gP);
+    el('path',{d:d,'class':'hit2'},gP);
+    lastEnd=end;
+  });
+  var pt1=el('text',{x:(lastEnd[0]-4).toFixed(1),y:(lastEnd[1]+17).toFixed(1),'class':'tm','text-anchor':'middle',style:'fill:var(--para-ink)'},gP);pt1.textContent='тазовые нервы';
+  /* конус */
+  var cn=pt(19.95,0);
+  var cnt=el('text',{x:(cn[0]-14).toFixed(1),y:(cn[1]+16).toFixed(1),'class':'tm9','text-anchor':'end'},svg);cnt.textContent='конец мозга L1–L2';
+
+  svg.setAttribute('viewBox','0 0 420 '+Math.ceil(yAt(29.9)+40));
+
+  /* выбор */
+  var box=$('#reginfo'),keys=['bs','s','p','n'];
+  function show(k){
+    keys.forEach(function(q){groups[q].classList.toggle('sel',q===k)});
+    box.innerHTML='<p class="mt"></p><h3></h3><p></p>';
+    box.children[0].textContent=info[k].m;box.children[1].textContent=info[k].t;box.children[2].textContent=info[k].b;
+  }
+  keys.forEach(function(k){
+    groups[k].addEventListener('click',function(){show(k)});
+    groups[k].addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();show(k)}});
+  });
+  show('s');
+})();
+
+/* ---------- Фильтр эффектов ---------- */
+(function(){
+  var fx=$('#fx'),bs=$$('.chip[data-show]');
+  bs.forEach(function(b){b.addEventListener('click',function(){
+    fx.setAttribute('data-show',b.dataset.show);
+    bs.forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false')});
+  })});
+})();
+
+/* ---------- Барорефлекс ---------- */
+(function(){
+  var chain=$('#chain'),res=$('#chainres'),bs=$$('.chip[data-sc]');
+  var SC={
+    down:{steps:['Вы встали. Под действием силы тяжести кровь смещается в ноги, давление в артериях груди и шеи падает.','Барорецепторы дуги аорты и каротидного синуса растянуты слабее и шлют импульсы реже.','Сигнал идёт по языкоглоточному и блуждающему нервам в ядро одиночного пути в продолговатом мозге.','Центр ослабляет влияние блуждающего нерва и усиливает симпатику.','Пульс чаще, сосуды уже, давление выравнивается за несколько секунд.'],res:'Итог: давление восстановилось, голова не кружится.'},
+    up:{steps:['Давление в артериях выросло, например после нагрузки или сильной эмоции.','Барорецепторы дуги аорты и каротидного синуса растягиваются сильнее и чаще шлют импульсы.','Сигнал идёт по языкоглоточному и блуждающему нервам в ядро одиночного пути в продолговатом мозге.','Центр усиливает активность блуждающего нерва и снижает активность симпатики.','Пульс реже, сосуды шире, давление возвращается к норме.'],res:'Итог: давление снизилось, система вернулась к равновесию.'}
+  };
+  var cur='down',idx=0,timer=0;
+  function build(){
+    chain.className='chain '+cur;chain.innerHTML='';
+    SC[cur].steps.forEach(function(s,i){
+      var li=document.createElement('li');
+      var n=document.createElement('span');n.className='n';n.textContent=i+1;
+      var t=document.createElement('span');t.textContent=s;
+      li.appendChild(n);li.appendChild(t);chain.appendChild(li);
+    });
+    res.textContent=SC[cur].res;
+    idx=0;mark();
+  }
+  function mark(){
+    var lis=chain.children;
+    for(var i=0;i<lis.length;i++){
+      lis[i].className=reduce?'done':(i<idx?'done':i===idx?'on':'');
+    }
+  }
+  function tick(){idx=(idx+1)%(SC[cur].steps.length+1);if(idx===SC[cur].steps.length){mark();return}mark()}
+  function run(){clearInterval(timer);if(reduce)return;timer=setInterval(tick,1500)}
+  bs.forEach(function(b){b.addEventListener('click',function(){
+    cur=b.dataset.sc;bs.forEach(function(o){o.setAttribute('aria-pressed',o===b?'true':'false')});build();run();
+  })});
+  build();run();
+})();
+
+/* ---------- Дыхание ---------- */
+(function(){
+  var c=$('#bcircle'),l=$('#blabel'),s=$('#bsec'),b=$('#bbtn'),r=$('#bres'),tot=$('#btot');
+  var on=false,t0=0,elapsed=0,raf=0;
+  function ease(k){return(1-Math.cos(Math.PI*k))/2}
+  function fmt(ms){var t=Math.floor(ms/1000);return Math.floor(t/60)+':'+('0'+(t%60)).slice(-2)}
+  function frame(n){
+    var ms=n-t0,u=(ms%10000)/1000,sc,txt,rem;
+    if(u<4){sc=1+.55*ease(u/4);txt='Вдох';rem=4-u}else{sc=1.55-.55*ease((u-4)/6);txt='Выдох';rem=10-u}
+    c.style.transform='scale('+sc.toFixed(3)+')';
+    l.textContent=txt;s.textContent=Math.ceil(rem);tot.textContent=fmt(ms);
+    raf=requestAnimationFrame(frame);
+  }
+  b.addEventListener('click',function(){
+    on=!on;
+    if(on){t0=performance.now()-elapsed;raf=requestAnimationFrame(frame);b.textContent='Пауза'}
+    else{cancelAnimationFrame(raf);elapsed=performance.now()-t0;b.textContent='Продолжить'}
+  });
+  r.addEventListener('click',function(){
+    on=false;cancelAnimationFrame(raf);elapsed=0;b.textContent='Начать';
+    c.style.transform='scale(1)';l.textContent='Готовы?';s.textContent='4 / 6';tot.textContent='0:00';
+  });
+})();
+
+/* ---------- Сосуды ---------- */
+(function(){
+  var svg=$('#vtree');if(!svg)return;
+  var W=320;
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e}
+  function mir(d){return d.replace(/(-?\d+\.?\d*),(-?\d+\.?\d*)/g,function(m,x,y){return (W-parseFloat(x)).toFixed(1)+','+y})}
+
+  var half='M160,8 C178,8 188,24 188,42 C188,58 182,68 174,74 L174,84 C198,90 224,98 238,112 C248,124 252,150 256,190 L262,262 C264,272 256,278 250,272 L240,214 L230,176 C222,210 214,236 214,262 C214,292 224,312 226,336 C230,380 232,412 232,444 C234,480 234,500 232,522 L242,546 L212,546 C212,530 210,510 208,480 C206,444 204,400 196,362 C190,346 176,338 160,336 Z';
+  [half,mir(half)].forEach(function(d){el('path',{d:d,'class':'sil'},svg)});
+  var lung='M146,112 C130,112 116,126 114,150 C112,172 124,186 142,184 C150,180 152,160 152,140 C152,126 150,116 146,112Z';
+  [lung,mir(lung)].forEach(function(d){el('path',{d:d,'class':'lung'},svg)});
+  el('ellipse',{cx:132,cy:240,rx:9,ry:16,transform:'rotate(12 132 240)','class':'kid'},svg);
+  el('ellipse',{cx:212,cy:238,rx:9,ry:16,transform:'rotate(-12 212 238)','class':'kid'},svg);
+
+  var DEF=[];
+  function add(r,d,w,o){o=o||{};DEF.push({r:r,t:o.t||'a',w:w,d:d,tr:o.tr||'',rev:!!o.rev})}
+  function vein(r,d,w,dx,dy){add(r,d,w*.8,{t:'v',tr:'translate('+dx+','+dy+')',rev:true})}
+
+  /* ствол */
+  add('core','M166,170 C166,146 166,126 174,118 C182,112 188,124 187,140',12);
+  add('core','M187,140 C187,170 186,200 184,232',9);
+  add('core','M184,232 C183,262 172,292 160,318',7);
+  add('core','M170,119 C164,108 152,100 140,96',5);
+  add('core','M144,326 C148,290 150,250 152,214 C153,192 156,182 160,176',8,{t:'v'});
+  add('core','M150,60 C150,90 152,120 156,140 C158,152 160,160 162,168',7,{t:'v'});
+  /* мозг */
+  var rc='M140,96 C142,76 148,54 154,32',lc='M174,117 C172,92 166,60 166,32';
+  add('brain',rc,3.4);add('brain',lc,3.4);
+  add('brain','M154,32 C150,22 156,16 160,20 C164,16 170,22 166,32',2.2);
+  vein('brain',rc,3.4,-6,6);vein('brain',lc,3.4,6,6);
+  /* руки */
+  var ra='M140,96 C126,98 108,102 94,114 C80,128 74,160 70,196 C66,228 64,250 62,266';
+  var la='M182,124 C198,112 214,106 228,114 C242,128 248,160 252,196 C256,228 258,250 258,266';
+  add('arms',ra,3.6);add('arms',la,3.6);vein('arms',ra,3.6,5,3);vein('arms',la,3.6,-5,3);
+  /* кишечник */
+  var gs='M184,200 C164,200 148,208 142,222',gl='M142,222 C130,228 128,240 142,244 C156,248 160,258 146,262 C132,266 134,278 150,278';
+  add('gut',gs,4.2);add('gut',gl,2.8);vein('gut',gs,4.2,4,2);vein('gut',gl,2.8,4,2);
+  /* почки */
+  var kr='M184,226 C172,227 152,230 140,236',kl='M185,228 C192,228 198,230 204,234';
+  add('kid',kr,3);add('kid',kl,3);vein('kid',kr,3,0,5);vein('kid',kl,3,0,5);
+  /* ноги */
+  var lg='M160,318 C152,326 138,336 130,352 C122,380 112,420 108,446 C104,480 106,502 106,528';
+  add('legs',lg,4.4);add('legs',mir(lg),4.4);vein('legs',lg,4.4,6,0);vein('legs',mir(lg),4.4,-6,0);
+
+  var gV=el('g',{},svg),gA=el('g',{},svg);
+  DEF.forEach(function(o){
+    var host=o.t==='v'?gV:gA;
+    var b=el('path',{d:o.d,'class':'vbase '+(o.t==='v'?'ven':'art')},host);
+    var f=el('path',{d:o.d,'class':'vflow'+(o.rev?' rev':'')},host);
+    if(o.tr){b.setAttribute('transform',o.tr);f.setAttribute('transform',o.tr)}
+    o.b=b;o.f=f;
+  });
+  var heart=el('path',{d:'M166,192 C148,178 144,160 155,152 C162,148 167,152 169,158 C171,150 179,146 186,152 C195,160 188,180 166,192Z','class':'heartv'},svg);
+
+  function lab(x,y,t,a){var e=el('text',{x:x,y:y,'class':'tm','text-anchor':a||'start'},svg);e.textContent=t}
+  lab(196,22,'мозг');lab(122,292,'кишечник','end');lab(198,274,'почки');lab(8,200,'мышцы');lab(8,212,'рук');lab(8,440,'мышцы');lab(8,452,'ног');
+  lab(194,192,'сердце','start');
+
+  var SC={
+    rest:{hr:68,sym:20,brain:1,arms:1,legs:1,gut:1,kid:1,bars:[14,25,20,20,21],
+      t:'В покое кровь распределяется ровно: больше всего получают кишечник с печенью, почки и мозг. Симпатика поддерживает постоянный умеренный тонус сосудов, поэтому их можно и сужать, и расширять.'},
+    run:{hr:165,sym:80,brain:1.05,arms:1.8,legs:2.1,gut:.5,kid:.6,bars:[4,4,3,80,9],
+      t:'При беге симпатика и адреналин сужают сосуды кишечника, почек и кожи через α1-рецепторы и расширяют сосуды работающих мышц через β2-рецепторы. Мышцы к тому же сами расширяют свои сосуды продуктами обмена. Сердечный выброс растёт в несколько раз, мышцы получают большую часть крови. Мозг в абсолютных цифрах получает почти столько же, но долю меньшую.'},
+    meal:{hr:75,sym:10,brain:1,arms:.9,legs:.9,gut:1.6,kid:1,bars:[12,35,18,17,18],
+      t:'После еды кровоток в стенке кишки растёт. Парасимпатика усиливает секрецию и перистальтику, а сосуды расширяют местные вещества. Доля мышц немного падает.'},
+    fear:{hr:130,sym:95,brain:1.1,arms:1.4,legs:1.4,gut:.5,kid:.6,bars:[14,12,12,40,22],
+      t:'При сильном испуге выбрасывается адреналин. Кожа бледнеет, потому что её сосуды сужаются, кишечник и почки получают меньше крови, мышцы и сердце получают больше. Пульс растёт.'}
+  };
+  var BL=['Мозг','Кишечник и печень','Почки','Мышцы','Остальное (сердце, кожа и др.)'];
+  var barsBox=$('#vbars'),vinfo=$('#vinfo'),bfill=[],bnum=[];
+  BL.forEach(function(n,ix){
+    var row=document.createElement('div');row.className='vb';
+    var l=document.createElement('span');l.className='vbl';l.textContent=n;
+    var tr=document.createElement('span');tr.className='vbt';
+    var fi=document.createElement('span');fi.className='vbf';fi.style.width='0%';tr.appendChild(fi);
+    var nu=document.createElement('span');nu.className='vbn';
+    row.appendChild(l);row.appendChild(tr);row.appendChild(nu);barsBox.appendChild(row);
+    bfill.push(fi);bnum.push(nu);
+  });
+
+  /* разрезы стенки */
+  function xsec(host,kind){
+    var s=el('svg',{viewBox:'0 0 130 130',role:'img','aria-label':kind==='a'?'Артерия кожи и кишки в разрезе':'Артерия скелетной мышцы в разрезе','class':'xs'});
+    el('circle',{cx:65,cy:65,r:60,'class':'xadv'},s);
+    el('circle',{cx:65,cy:65,r:50,'class':'xmed'},s);
+    var ring=el('circle',{cx:65,cy:65,r:20,'class':'xint'},s);
+    var lum=el('circle',{cx:65,cy:65,r:17,'class':'xlum'},s);
+    var rbc=[];
+    for(var q=0;q<5;q++){rbc.push(el('ellipse',{cx:65,cy:65,rx:4,ry:2.2,'class':'xrbc'},s))}
+    host.appendChild(s);
+    return {ring:ring,lum:lum,rbc:rbc,kind:kind};
+  }
+  var xa=xsec($('#xs1'),'a'),xb=xsec($('#xs2'),'b');
+  var xp1=$('#xp1'),xp2=$('#xp2'),sym=$('#symv');
+  function rad(kind,t){return kind==='a'?28-16*t:14+12*t}
+  function upX(x,t,out){
+    var r=rad(x.kind,t),r0=rad(x.kind,.2);
+    x.lum.setAttribute('r',r.toFixed(1));x.ring.setAttribute('r',(r+3).toFixed(1));
+    x.rbc.forEach(function(e,ix){
+      var ang=ix*72*Math.PI/180,rr=r*.55;
+      e.setAttribute('cx',(65+Math.cos(ang)*rr).toFixed(1));e.setAttribute('cy',(65+Math.sin(ang)*rr).toFixed(1));
+      e.setAttribute('transform','rotate('+(ix*72)+' '+(65+Math.cos(ang)*rr).toFixed(1)+' '+(65+Math.sin(ang)*rr).toFixed(1)+')');
+    });
+    out.textContent='диаметр просвета '+Math.round(r/r0*100)+'% от покоя';
+  }
+  function upSym(v){var t=v/100;upX(xa,t,xp1);upX(xb,t,xp2)}
+  sym.addEventListener('input',function(){upSym(+sym.value);$$('.chip[data-vs]').forEach(function(c){c.setAttribute('aria-pressed','false')})});
+
+  var chips=$$('.chip[data-vs]');
+  function scene(key){
+    var s=SC[key];
+    DEF.forEach(function(o){
+      var f=o.r==='core'?1:(s[o.r]||1),base=o.w,k=o.r==='core'?1:Math.pow(f,.7);
+      o.b.style.strokeWidth=(base*k).toFixed(2);
+      o.f.style.strokeWidth=Math.max(1,base*k*.38).toFixed(2);
+      var sp=(s.hr/68)*(o.r==='core'?1:Math.pow(f,.5));
+      o.f.style.animationDuration=(2.8/Math.max(.35,sp)).toFixed(2)+'s';
+    });
+    heart.style.animationDuration=(60/s.hr).toFixed(3)+'s';
+    s.bars.forEach(function(p,ix){bfill[ix].style.width=p+'%';bnum[ix].textContent=p+'%'});
+    vinfo.textContent=s.t;
+    sym.value=s.sym;upSym(s.sym);
+    chips.forEach(function(c){c.setAttribute('aria-pressed',c.dataset.vs===key?'true':'false')});
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){scene(c.dataset.vs)})});
+  scene('rest');
+})();
+
+/* ---------- Бегущие сигналы по сегментам и появление блоков ---------- */
+(function(){
+  ['s','p','bs'].forEach(function(k){
+    $$('.reg-'+k+' .hl').forEach(function(r,i){r.style.animationDelay=(i*0.16)+'s'});
+  });
+  if(reduce||!('IntersectionObserver' in window))return;
+  var sel='.vfig,.vside,.sh,.div3,.relay,.recs>div,.excs li,.fxrow,.entbox,.tl li,.clin>div,.drug,.warn,.breath,.diagram,.spine,.info';
+  var els=$$(sel);
+  els.forEach(function(e){e.classList.add('rv')});
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if(!en.isIntersecting)return;
+      var e=en.target,sib=Array.prototype.indexOf.call(e.parentNode.children,e);
+      e.style.animationDelay=(Math.min(sib,6)*60)+'ms';
+      e.classList.add('in');io.unobserve(e);
+    });
+  },{threshold:.12});
+  els.forEach(function(e){io.observe(e)});
+})();
+})();
+</script>
+
+</body></html>
